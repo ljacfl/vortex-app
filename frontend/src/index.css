@@ -6,3 +6,412 @@ body{
   background: #202020;
   color: aqua;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;  
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1px;
+  background-color: #ffffff;
+  margin: auto;
+  border-radius: 1rem;
+
+}
+
+.container-fluid {
+  margin-top: -15px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;  
+  background-color: #f28d27;
+  border-radius: 1rem;
+}
+
+
+.text-gray-800 {
+  color: #ffffff !important;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 10px;
+  margin-left: 10px;  
+  
+  
+}
+
+.actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;  
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #1e293a;  
+  border-color: transparent;
+  border-radius: 1rem;
+  background-clip: border-box;
+  border: 5px solid rgba(255, 255, 255, 0.125);
+  top: 10px;
+  
+}
+
+.card-1{
+  background-color: #1e293a;
+  border-radius: 1rem;
+}
+
+.card.border-left-primary {
+  background-color: #ffffff;
+  
+}
+
+.card-actividades-colaborador {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #393a1e;
+  background-clip: border-box;
+  background-color: #ffffff;
+  border-radius: 1rem;
+}
+
+.card-header {  
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(255, 255, 255, 0.03);  
+  color: #ffffff;
+}
+
+.list-icon,
+.circle-check {
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: #f28d27;
+}
+
+
+main {
+  width: 100%;
+  padding: 20px;
+}
+
+.sidebar {
+  background: #10c1bc;
+  color: #ffffff;
+  height: 100vh;
+  width: 20px;
+  transition: all 0.5s;
+  border-radius: 1rem;
+}
+
+.top_section {
+  /* de sideba posicion de logo y titulor*/
+  display: flex;
+  align-items: center;
+  padding: 20px 15px;
+}
+
+.logo {
+  /*Foto y nombre sidebar*/
+  font-size: 30px;
+}
+
+.bars {
+  /*Icono desplegar sidebar*/
+  display: flex;
+  font-size: 25px;
+  margin-left: 50px;
+}
+
+.link {
+  display: flex;
+  color: #fff;
+  padding: 10px 15px;
+  gap: 20px;
+  transition: all 0.5s;
+}
+
+.link:hover {
+  background: lightskyblue;
+  color: #000;
+  transition: all 0.5s;
+}
+
+.active {
+  background: #ffffff;
+  /*Cambia color del fondo apartado perfil */
+  color: rgb(0, 0, 0);
+  /*Cambia el color de la letra encabezados de los box */
+}
+
+.icon,
+.link_text {
+  /*Tamaño letras e iconos de sidebar*/
+  font-size: 20px;
+
+}
+
+/* Estilos para el contenedor principal */
+.media-body.ml-4 {
+  /* Ajusta el margen izquierdo para alinear el contenido */
+  margin-left: 1rem;
+}
+
+/* Estilos para el botón de carga de foto */
+.btn.btn-outline-primary { 
+  /* Boton upload new photo*/
+  /* Personaliza los estilos del botón */
+  color: #ffffff;/* Color del texto */
+  border-color: transparent;/* Color del borde */
+  background-color: #00B8A9;
+  border-radius: 0.5rem;
+
+}
+
+/* Estilos para el botón "Reset" */
+.btn.btn-default.md-btn-flat {
+  /* Personaliza los estilos del botón */
+  color: #ffffff;
+  /* Color del texto */
+  background-color: transparent;
+  /* Fondo transparente */
+  border-color: #ccc;
+  /* Color del borde */
+}
+
+/* Estilos para el texto pequeño */
+.text-light.small.mt-1 {
+  /* Personaliza los estilos del texto pequeño */
+  color: #f8f9fa;
+  /* Color del texto */
+  margin-top: 0.25rem;
+  /* Espacio superior */
+}
+
+.text-right.mt-3 {
+  text-align: right;
+  /* Alinea el contenido a la derecha */
+  margin-top: 1rem;
+  /* Espacio superior */
+
+}
+
+/* Boton save changes perfil */
+.btn-primary { /*BOTON LOGOUT*/
+  background-color: #ff4400;
+  /* Cambia el fondo del botón "Guardar cambios" a azul */
+  color: #fff;
+  /* Cambia el color del texto a blanco */
+  border-radius: 0.5rem;
+  border-color: transparent;
+  height: auto;
+  width: 150px;
+  margin-right: 1rem;
+  
+}
+
+.aaa {
+  /*Color letra boton texto abajo de upload*/
+  color: #ffffff;
+}
+
+
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12,
+.col,
+.col-auto,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-sm,
+.col-sm-auto,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md,
+.col-md-auto,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-lg,
+.col-lg-auto,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-xl,
+.col-xl-auto {
+  position: relative;
+  max-width: 100%;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+}
+
+
+
+.collaborator-photo {
+  width: 50px;
+  /* Ajusta el tamaño de la foto según tus preferencias */
+  height: 50px;
+  margin-right: 10px;
+  /* Espacio entre la foto y los detalles */
+}
+
+/* Estilos para los detalles del colaborador */
+.collaborator-details {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Estilo para la barra de progreso */
+.progress-bar {
+  background-color: #00B8A9;
+  /* Cambia este color según tus preferencias */
+  border: transparent;
+}
+
+.progress-bar-1 {
+  background-color: #00B8A9;
+  /* Cambia este color según tus preferencias */
+}
+
+/*prueba*/
+
+.col-6-1 {
+  width: 50%;
+}
+
+.form-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.fuente {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ff4400;
+  text-transform: uppercase;
+
+}
+
+.fuente-form {
+  color: #ffffff;
+}
+
+.small.font-weight-bold {
+  /*pequeña de actividades dash col*/
+  color: #000000;
+}
+
+.small.font-weight-bold-1 {
+  color: #ffffff;
+}
+
+.h1 {
+  color: #000000;
+}
+
+.h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+/* Para el elemento "Sign in to continue" */
+.sign-in-text {
+  color: #000000; /* Cambia este color al que desees */
+  
+}
+
+/* Para el elemento "Welcome!" */
+.welcome-text {
+  color: #ffffff; /* Cambia este color al que desees */
+  font-weight: bold;
+}
+
+.campos-obligatorios{
+  color: #ffffff; /* Cambia este color al que desees */
+  font-family: sans-serif;
+  font-style: italic;
+}
