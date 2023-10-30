@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
+
 
 const Login = ({ setUser, selectedRole, onChange }) => {
     const [name, setName] = useState("");
@@ -57,6 +59,9 @@ const Login = ({ setUser, selectedRole, onChange }) => {
                     <Button type="submit">Sign in</Button>
                 </form>
                 {error && <span className="campos-obligatorios">Los campos son obligatorios.</span>}
+                <Link to="/register">
+                    <Button variant="secondary">Registrarse</Button>
+                </Link>
             </div>
         </section>
     );

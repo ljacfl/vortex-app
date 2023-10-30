@@ -9,7 +9,10 @@ import Login from "./components/Login";
 import DashboardColaborador from "./pages/DashboardColaborador";
 import DashboardCoach from "./pages/DashboardCoach";
 import DashboardDirectivo from "./pages/DashboardDirectivo";
+
 import PlanCarrera from "./pages/PlanCarrera";
+import RegisterPage from "./pages/RegisterPage"
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -25,7 +28,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={user ? <Navigate to="/" /> : <Login setUser={setUser} selectedRole={selectedRole} onChange={(evt) => setSelectedRole(evt.target.value)} />} />
-          <Route path="/" element={user ? (
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/cursos" element={<h1> cursos Page</h1>} />
+          <Route path="/add-cursos" element={<h1> new curso </h1>} />
+          <Route path="/cursos/:id" element={<h1> update curso</h1>} />
+          <Route path="/profile" element={<h1> profile</h1>} />
+          
+          <Route path="*" element={user ? (
             <Sidebar>
               <div className="text-right mt-3">
                 {user ? (
@@ -34,12 +43,11 @@ function App() {
               </div>
               <br></br>
               <Routes>
-
                 {selectedRole === "Colaborador" && <Route index element={<DashboardColaborador user={user} />} />}
                 {selectedRole === "Coach" && <Route index element={<DashboardCoach />} />}
                 {selectedRole === "Directivo" && <Route index element={<DashboardDirectivo />} />}
+                <Route path="/about" element={<h1>Perfil</h1>} />
                 <Route path="/plan-carrera" element={<PlanCarrera />} />
-
               </Routes>
             </Sidebar>
           ) : <Navigate to="/login" />} />
