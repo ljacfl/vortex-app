@@ -1,39 +1,52 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { AuthProvider } from "./context/AuthContext"
-import React from "react"; // Importa React desde 'react'
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import React, { useState } from "react";
+import { Button } from 'react-bootstrap';
 import './index.css';
 
-import Sidebar from "./components/Sidebar"
+import Sidebar from "./components/Sidebar";
 import Login from "./components/Login";
 import DashboardColaborador from "./pages/DashboardColaborador";
 import DashboardCoach from "./pages/DashboardCoach";
 import DashboardDirectivo from "./pages/DashboardDirectivo";
 import PlanCarrera from "./pages/PlanCarrera";
 
-import RegisterPage from "./pages/registerpage"
-import LoginPage from "./pages/loginpage"
-
 function App() {
-  return(
-    <AuthProvider> 
-      <BrowserRouter>
-      
-      <Routes>
-        <Route path="/" element= {<h1> Home Page</h1>} />
+  const [user, setUser] = useState(null);
+  const [selectedRole, setSelectedRole] = useState("Colaborador");
 
-        <Route path="/login" element= {<LoginPage/>} />
-        <Route path="/colaborador" element={<DashboardColaborador user={"asd"} />} />
-        <Route path="/coach" element={<DashboardCoach />} />
-        <Route path="/directivo" element={<DashboardDirectivo />} />
-        <Route path="/plan-carrera" element={<PlanCarrera />} />
-        <Route path="/register" element= {<RegisterPage />} />
-        <Route path="/cursos" element= {<h1> cursos Page</h1>} />
-        <Route path="/add-cursos" element= {<h1> new curso </h1>} />
-        <Route path="/cursos/:id" element= {<h1> update curso</h1>} />
-        <Route path="/profile" element= {<h1> profile</h1>} />
-      </Routes>
-    </BrowserRouter>
+  const handleLogout = () => {
+    setUser(null);
+    return <Navigate to="/login" />;
+  };
+
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={user ? <Navigate to="/" /> : <Login setUser={setUser} selectedRole={selectedRole} onChange={(evt) => setSelectedRole(evt.target.value)} />} />
+          <Route path="/" element={user ? (
+            <Sidebar>
+              <div className="text-right mt-3">
+                {user ? (
+                  <Button onClick={handleLogout} variant='primary'>Log out</Button>
+                ) : null}
+              </div>
+              <br></br>
+              <Routes>
+
+                {selectedRole === "Colaborador" && <Route index element={<DashboardColaborador user={user} />} />}
+                {selectedRole === "Coach" && <Route index element={<DashboardCoach />} />}
+                {selectedRole === "Directivo" && <Route index element={<DashboardDirectivo />} />}
+                <Route path="/plan-carrera" element={<PlanCarrera />} />
+
+              </Routes>
+            </Sidebar>
+          ) : <Navigate to="/login" />} />
+        </Routes>
+      </BrowserRouter>
     </AuthProvider>
-  )
+  );
 }
-export default App
+
+export default App;

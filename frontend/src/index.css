@@ -20,6 +20,10 @@ body{
   text-align: center;
 }
 
+.perfil-alvaro{
+  align-items: center;
+}
+
 .container {
   display: flex;
   grid-template-columns: 1fr 1fr;
