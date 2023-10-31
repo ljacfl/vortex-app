@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
   background: #202020;
   color: aqua;
 }
@@ -10,7 +10,7 @@ body{
 * {
   margin: 0;
   padding: 0;
-  text-decoration: none;  
+  text-decoration: none;
 }
 
 #root {
@@ -20,11 +20,17 @@ body{
   text-align: center;
 }
 
-.perfil-alvaro{
+.perfil-alvaro {
   margin-left: 0;
   margin-right: 0;
   margin: auto;
   padding: 5px;
+}
+
+.datos-user {
+  display: flex;
+  flex-direction: column;
+  /*Se especifica como quieres que lo reparte si como columna o row filas*/
 }
 
 
@@ -32,7 +38,7 @@ body{
   display: flex;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  
+
   background-color: #ffffff;
   margin: auto;
   border-radius: 1rem;
@@ -42,7 +48,7 @@ body{
 .container-fluid {
   margin-top: -15px;
   padding-left: 1.5rem;
-  padding-right: 1.5rem;  
+  padding-right: 1.5rem;
   background-color: #f28d27;
   border-radius: 1rem;
   flex-wrap: wrap;
@@ -50,16 +56,16 @@ body{
 
 
 .text-gray-800 {
-  color: #ffffff !important;
+  color: #af0d0d !important;
 }
 
 .row {
   display: flex;
-  
+  position: relative;
   margin-right: 10px;
-  margin-left: 10px;  
+  margin-left: 10px;
   overflow: auto;
-  
+
 }
 
 .actions {
@@ -71,32 +77,33 @@ body{
 .card {
   position: relative;
   display: flex;
-  flex-direction: column;  
+  flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #1e293a;  
+  background-color: #1e293a;
   border-color: transparent;
   border-radius: 1rem;
   background-clip: border-box;
   border: 5px solid rgba(255, 255, 255, 0.125);
   top: 10px;
-  
+
 }
 
-.card_resumen{
+.card_resumen {
   background-color: #1e293a;
   border-radius: 1rem;
-  
+
 }
 
-.card-1{
+.card-1 {
   background-color: #1e293a;
   border-radius: 1rem;
 }
 
 .card.border-left-primary {
   background-color: #ffffff;
-  
+  position: relative;
+
 }
 
 .card-actividades-colaborador {
@@ -111,10 +118,10 @@ body{
   border-radius: 1rem;
 }
 
-.card-header {  
+.card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(255, 255, 255, 0.03);  
+  background-color: rgba(255, 255, 255, 0.03);
   color: #ffffff;
 }
 
@@ -202,11 +209,13 @@ main {
 }
 
 /* Estilos para el botón de carga de foto */
-.btn.btn-outline-primary { 
+.btn.btn-outline-primary {
   /* Boton upload new photo*/
   /* Personaliza los estilos del botón */
-  color: #ffffff;/* Color del texto */
-  border-color: transparent;/* Color del borde */
+  color: #ffffff;
+  /* Color del texto */
+  border-color: transparent;
+  /* Color del borde */
   background-color: #00B8A9;
   border-radius: 0.5rem;
 
@@ -241,7 +250,8 @@ main {
 }
 
 /* Boton save changes perfil */
-.btn-primary { /*BOTON LOGOUT*/
+.btn-primary {
+  /*BOTON LOGOUT*/
   background-color: #ff4400;
   /* Cambia el fondo del botón "Guardar cambios" a azul */
   color: #fff;
@@ -251,7 +261,7 @@ main {
   height: auto;
   width: 150px;
   margin-right: 1rem;
-  
+
 }
 
 .aaa {
@@ -339,7 +349,15 @@ main {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0;
-  
+
+}
+
+.resumen-coach {
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto
 }
 
 
@@ -361,13 +379,13 @@ main {
 
 /* Estilo para la barra de progreso */
 .progress-bar {
-  background-color: #00B8A9;
+  background-color: #d60a0a;
   /* Cambia este color según tus preferencias */
   border: transparent;
 }
 
 .progress-bar-1 {
-  background-color: #00B8A9;
+  background-color: #ef3c14;
   /* Cambia este color según tus preferencias */
 }
 
@@ -420,18 +438,21 @@ main {
 
 /* Para el elemento "Sign in to continue" */
 .sign-in-text {
-  color: #000000; /* Cambia este color al que desees */
-  
+  color: #000000;
+  /* Cambia este color al que desees */
+
 }
 
 /* Para el elemento "Welcome!" */
 .welcome-text {
-  color: #ffffff; /* Cambia este color al que desees */
+  color: #ffffff;
+  /* Cambia este color al que desees */
   font-weight: bold;
 }
 
-.campos-obligatorios{
-  color: #ffffff; /* Cambia este color al que desees */
+.campos-obligatorios {
+  color: #ffffff;
+  /* Cambia este color al que desees */
   font-family: sans-serif;
   font-style: italic;
 }

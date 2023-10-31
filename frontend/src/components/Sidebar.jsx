@@ -19,7 +19,7 @@ const Sidebar = ({ children }) => {
             icon: <FaTh />
         },
         {
-            path: "/about",
+            path: "/perfil",
             name: "Perfil",
             icon: <FaUserAlt />
         },

@@ -7,9 +7,9 @@ const DashboardColaborador = ({ user }) => {
     <div class="container-fluid">
       <br></br>
       <h1>Inicio - Colaborador</h1>
-      
-        <img src="alvaro150.png" alt className=" perfil-alvaro " />
-      
+
+      <img src="alvaro150.png" alt className=" perfil-alvaro " />
+
       <div className="card_resumen mb-4">
         <div className="card-header py-3">
           <h6 className="h3">Resumen</h6>

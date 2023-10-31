@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-
+import RoleSelector from './RoleSelector';
 
 const Login = ({ setUser, selectedRole, onChange }) => {
     const [name, setName] = useState("");
@@ -29,6 +29,7 @@ const Login = ({ setUser, selectedRole, onChange }) => {
                         <img src="/logo_vortex.png" alt="Image" height="100" className="perfil-alvaro" />
                         <div className="text-900 text-3xl font-medium mb-3 welcome-text">Welcome!</div>
                         <span className="text-600 font-medium sign-in-text">Sign in to continue</span>
+                        
                         <div className="role-selector">
                             <select
                                 id="roleSelect"
