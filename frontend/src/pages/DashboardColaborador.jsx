@@ -6,7 +6,7 @@ const DashboardColaborador = ({ user }) => {
   return (
     <div class="container-fluid">
       <br></br>
-      <h1>Inicio - Colaborador</h1>
+      <div className="text-900 text-3xl font-medium mb-3 welcome-text">Inicio - Colaborador</div>
 
       <img src="alvaro150.png" alt className=" perfil-alvaro " />
 

@@ -1,7 +1,8 @@
 import { Button } from "react-bootstrap";
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FormatoPlan from "../components/FormatoPlan";
+import { usePlanes_Carreras } from "../context/Context";
 
 const DashboardCoach = () => {
     const [inputText, setInputText] = useState(''); // Estado para el primer textarea
@@ -9,6 +10,8 @@ const DashboardCoach = () => {
 
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
     const [planes, setPlanes] = useState([]);
+
+    const Navigate = useNavigate();
 
     const handleFormSubmit = (nuevoPlan) => {
         // Agregar el nuevo plan a la lista de planes
@@ -18,7 +21,7 @@ const DashboardCoach = () => {
         setMostrarFormulario(false);
     };
 
-
+    const { planes_carreras, getPlanes_carreras } = usePlanes_Carreras()
 
     useEffect(() => {
         // Inicializar el estado con tareas predeterminadas
@@ -28,6 +31,7 @@ const DashboardCoach = () => {
             'Mejorar habilidades de resolución de problemas.'
         ];
         setOutputText(initialTasks.map(task => `\n\u2022 ${task}`).join(''));
+        getPlanes_carreras()
     }, []);
 
     const handleInputChange = (e) => {
@@ -45,19 +49,23 @@ const DashboardCoach = () => {
             setInputText(''); // Limpiar el primer textarea
         }
     };
+
+    const navigatePlanForm = () => {
+        Navigate('planForm')
+    }
     return (
         <div class="container-fluid">
             <br></br>
-            <h1>Inicio - Coach</h1>
+            <div className="text-900 text-3xl font-medium mb-3 welcome-text">Inicio - Coach</div>
             <img src="raul.png" alt className=" perfil-alvaro " />
             <div className="card_resumen mb-4">
                 <div className="card-header py-3">
-                    <h6 className="h3">Resumen</h6>
+                    <div className="resume-text">Resumen</div>
                 </div>
                 <div className="row">
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div className="card border-left-primary shadow h-100 py-2">
-                            <h3>Alvaro Tabares</h3>
+                            <div className="h3">Alvaro Tabares</div>
                             <div className="resumen-coach">
                                 <img src="alvaro.png" alt className="perfil" />
 
@@ -84,7 +92,7 @@ const DashboardCoach = () => {
                     </div>
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
-                            <h3>Valeria Rivera</h3>
+                            <div className="h3">Valeria Rivera</div>
                             <div className="resumen-coach">
                                 <img src="user.png" alt className="perfil" />
                             </div>
@@ -98,7 +106,7 @@ const DashboardCoach = () => {
                     </div>
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
-                            <h3>Mariana Velasquez</h3>
+                            <div className="h3">Mariana Velasquez</div>
                             <div className="resumen-coach">
                                 <img src="user.png" alt className="perfil" />
                             </div>
@@ -114,10 +122,10 @@ const DashboardCoach = () => {
                 <div class="col-lg-6">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 className="h3">Recomendaciones</h6>
+                            <div className="recomendaciones-text">Recomendaciones</div>
                         </div>
-                        <div class="card-body">
-                            <div class="form-group mt-4">
+                        <div className="card-body">
+                            <div className="form-group">
                                 <textarea
                                     id="outputTextArea"
                                     class="form-control"
@@ -146,13 +154,26 @@ const DashboardCoach = () => {
                 <div class="col-lg-6">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 className="h3">Plan Carrera</h6>
+                            <div className="plancarrera-text">Plan Carrera</div>
                         </div>
+
+                        {planes_carreras.map((plan, index) => (
+                            <div key={index}>
+                                <p>nombre colaborador : {plan.nombre_colaborador}</p>
+                                <p> descripcion : {plan.descripcion}</p>
+                                <p>unidades estimadas : {plan.unidades_estimadas}</p>
+                                <p>es de pago : {plan.pago}</p>
+                                <p>duracion en meses : {plan.meses_realizacion}</p>
+                                <p>colaborador lider : {plan.colaborador_lider}</p>
+                                <p>fecha inicio : {plan.fecha_inicio}</p>
+                            </div>
+                        ))}
+
                         <div class="card-body">
-                            {/* Agrega un botón para mostrar/ocultar el formulario */}
-                            <button onClick={() => setMostrarFormulario(!mostrarFormulario)}>
-                                {mostrarFormulario ? 'Ocultar Formulario' : 'Crear Nuevo Plan'}
-                            </button>
+                            {/* Boton formulario Plan carrera */}
+                            <Button onClick={() => navigatePlanForm()}>
+                                Crear Plan Carrera
+                            </Button>
 
                             {/* Mostrar el formulario si mostrarFormulario es verdadero */}
                             {mostrarFormulario && <FormatoPlan onFormSubmit={handleFormSubmit} />}
@@ -160,7 +181,7 @@ const DashboardCoach = () => {
                             {/* Mostrar la lista de planes */}
                             {planes.length > 0 && (
                                 <div className="fuente-form">
-                                    <h3>Planes Creados</h3>
+                                    <div className="h3">Planes Creados</div>
                                     <ul>
                                         {planes.map((plan, index) => (
                                             <li key={index}>
@@ -179,19 +200,9 @@ const DashboardCoach = () => {
                             )}
                         </div>
                     </div>
-
                 </div>
-
-
             </div>
-
-
-
-
-
         </div>
-
-
     )
 }
 

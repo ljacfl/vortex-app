@@ -89,10 +89,24 @@ body {
 
 }
 
+.form-group{
+  color: #000;
+  border-radius: 1rem;
+  
+}
+
 .card_resumen {
   background-color: #1e293a;
   border-radius: 1rem;
 
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  color: #ffffff;
 }
 
 .card-1 {
@@ -425,7 +439,11 @@ main {
 }
 
 .h1 {
-  color: #000000;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  line-height: 1.2;
 }
 
 .h3 {
@@ -433,7 +451,11 @@ main {
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 1.2;
-  color: #ffffff;
+  color: #000000;
+}
+
+.role-selector{
+  color: #000000;
 }
 
 /* Para el elemento "Sign in to continue" */
@@ -446,8 +468,18 @@ main {
 /* Para el elemento "Welcome!" */
 .welcome-text {
   color: #ffffff;
+  
+
   /* Cambia este color al que desees */
   font-weight: bold;
+}
+
+.resume-text,
+.recomendaciones-text,
+.plancarrera-text{
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1;
 }
 
 .campos-obligatorios {
