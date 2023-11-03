@@ -77,7 +77,7 @@ const DashboardCoach = () => {
                         </div>
                         <br></br>
 
-                        <Link to="/plan-carrera" k>
+                        <Link to="/plan-carrera">
                             <Button>Ver más</Button>
                         </Link>
 
@@ -123,7 +123,7 @@ const DashboardCoach = () => {
                             <div className="recomendaciones-text">Recomendaciones</div>
                         </div>
                         <div className="card-body">
-                            <div className="form-group">
+                            <div className="text-area">
                                 <textarea
                                     id="outputTextArea"
                                     class="form-control"
@@ -132,8 +132,9 @@ const DashboardCoach = () => {
                                     readOnly
                                 ></textarea>
                             </div>
-                            <div class="form-group">
-                                <label htmlFor="inputTextArea">Agregar nueva recomendacion:</label>
+                            <label htmlFor="inputTextArea">Agregar nueva recomendacion:</label>
+                            <div class="text-area">
+                                
                                 <textarea
                                     id="inputTextArea"
                                     class="form-control"

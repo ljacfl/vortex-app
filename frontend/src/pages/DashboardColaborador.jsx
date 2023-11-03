@@ -22,9 +22,12 @@ const DashboardColaborador = ({ user }) => {
   return (
     <div class="container-fluid">
       <br></br>
+      
       <div className="text-900 text-3xl font-medium mb-3 welcome-text">Inicio - Colaborador</div>
 
       <img src="alvaro150.png" alt className=" perfil-alvaro " />
+      <hr className="border-light m-0" />
+      <br></br>
 
       <div className="card_resumen mb-4">
         <div className="card-header py-3">

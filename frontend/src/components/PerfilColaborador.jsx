@@ -4,6 +4,7 @@ import { FormControl, Button } from 'react-bootstrap';
 
 const PerfilColaborador = () => {
     return (
+        <div className="container-fluid">
 
         <div class="card shadow mb-4">
             <head>
@@ -58,7 +59,7 @@ const PerfilColaborador = () => {
 
 
             </div>
-
+            </div>
         </div>
     );
 };

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background: #202020;
+  background: #ffffff;
 
 }
 
@@ -90,10 +90,15 @@ body {
   top: 10px;
 }
 
+.card-shadow{
+  background-color: #1e293a;
+  border-radius: 1rem;
+  color: #ffffff;
+}
 
 
 .form-group {
-  color: #000;
+  color: #ffffff;
   border-radius: 1rem;
 
 }
@@ -548,6 +553,10 @@ main {
   font-size: 1.5rem;
   font-weight: bold;
   line-height: 1;
+}
+
+.text-area{
+  color: #000000;
 }
 
 .campos-obligatorios {

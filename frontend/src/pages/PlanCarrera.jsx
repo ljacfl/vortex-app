@@ -40,7 +40,7 @@ const PlanCarrera = () => {
             <div className="text-center">
                 <div className="card-header py-3">
                     <br></br>
-                    <div className="text-900 text-3xl font-medium mb-3 welcome-text">Plan Carrera</div>
+                    <div className="text-900 text-3xl font-medium mb-3 welcome-text">Plan Carrera - Álvaro Tabares</div>
                 </div>
                 <hr className="border-light m-0" />
                 <br></br>

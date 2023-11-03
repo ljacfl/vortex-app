@@ -15,6 +15,8 @@ import PerfilCoach from "./components/PerfilCoach";
 import PerfilColaborador from "./components/PerfilColaborador";
 import Cursos from "./pages/Cursos";
 import Recompensas from "./components/Recompensas";
+import Recomendaciones from "./pages/Recomendaciones"
+import EquipoCoach from "./components/EquipoCoach";
 
 
 
@@ -58,7 +60,7 @@ function App() {
                     <>
                       <Route index element={<DashboardColaborador user={user} />} />
                       <Route path="perfil" element={<PerfilColaborador/>} />
-                      <Route path="registros" element={<Recompensas/>} />
+                      <Route path="informacion" element={<Recomendaciones/>}/>
                     </>
                   )}
                   {selectedRole === "Coach" && (
@@ -74,8 +76,10 @@ function App() {
                     </>
                   )}                  
                   <Route path="/plan-carrera" element={<PlanCarrera />} />
+                  <Route path="/equipo-coach" element={<EquipoCoach />} />
                   <Route path="/planForm" element={<PlanForm />} />
                   <Route path="/cursos" element={<Cursos/>} />
+                  <Route path="/recompensas" element={<Recompensas/>} />
                 </Routes>
               </Sidebar>
             ) : <Navigate to="/login" />} />
