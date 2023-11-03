@@ -24,7 +24,7 @@ const Sidebar = ({ children }) => {
             icon: <FaUserAlt />
         },
         {
-            path: "/analytics",
+            path: "/registros",
             name: "Registros",
             icon: <FaRegChartBar />
         },

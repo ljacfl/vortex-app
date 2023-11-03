@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FormatoPlan from "../components/FormatoPlan";
@@ -60,7 +61,7 @@ const DashboardCoach = () => {
             <img src="raul.png" alt className=" perfil-alvaro " />
             <div className="card_resumen mb-4">
                 <div className="card-header py-3">
-                    <div className="resume-text">Resumen</div>
+                    <div className="resume-text">Equipo</div>
                 </div>
                 <div className="row">
                     <div class="col-xl-3 col-md-6 mb-4">
@@ -68,26 +69,17 @@ const DashboardCoach = () => {
                             <div className="h3">Alvaro Tabares</div>
                             <div className="resumen-coach">
                                 <img src="alvaro.png" alt className="perfil" />
-
-
                             </div>
-                            <h4 class="text-gray-800">Progreso <span
-                                class="float-right">60%</span></h4>
-                            <div className="progress">
-                                <div
-                                    className="progress-bar"
-                                    role="progressbar"
-                                    style={{ width: `60%` }}
-                                    aria-valuenow="1"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100">
-                                </div>
+                            <h4 class="text-gray-800">Progreso </h4>
+                            <div role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <div className="progress-bar text-bg-warning mb-2" style={{ width: '60%' }}>60%</div>
                             </div>
                         </div>
                         <br></br>
-                        <div>
-                            <Button>asd</Button>
-                        </div>
+
+                        <Link to="/plan-carrera" k>
+                            <Button>Ver más</Button>
+                        </Link>
 
                     </div>
                     <div class="col-xl-3 col-md-6 mb-4">
@@ -96,12 +88,14 @@ const DashboardCoach = () => {
                             <div className="resumen-coach">
                                 <img src="user.png" alt className="perfil" />
                             </div>
-
+                            <h4 class="text-gray-800">Progreso </h4>
+                            <div role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <div className="progress-bar text-bg-warning mb-2" style={{ width: '20%' }}>20%</div>
+                            </div>
                         </div>
                         <br></br>
-                        <div>
-                            <Button>asd</Button>
-                        </div>
+
+                        <Button>Ver más</Button>
 
                     </div>
                     <div class="col-xl-3 col-md-6 mb-4">
@@ -110,11 +104,15 @@ const DashboardCoach = () => {
                             <div className="resumen-coach">
                                 <img src="user.png" alt className="perfil" />
                             </div>
+                            <h4 class="text-gray-800">Progreso </h4>
+                            <div role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                                <div className="progress-bar text-bg-warning mb-2" style={{ width: '75%' }}>75%</div>
+                            </div>
                         </div>
                         <br></br>
-                        <div>
-                            <Button>asd</Button>
-                        </div>
+
+                        <Button>Ver más</Button>
+
                     </div>
                 </div>
             </div>
@@ -134,7 +132,6 @@ const DashboardCoach = () => {
                                     readOnly
                                 ></textarea>
                             </div>
-
                             <div class="form-group">
                                 <label htmlFor="inputTextArea">Agregar nueva recomendacion:</label>
                                 <textarea
@@ -145,9 +142,11 @@ const DashboardCoach = () => {
                                     onChange={handleInputChange}
                                 ></textarea>
                             </div>
+
                             <Button class="btn btn-primary" onClick={handleSaveButtonClick}>
                                 Almacenar y Mostrar
                             </Button>
+                            
                         </div>
                     </div>
                 </div>
@@ -156,19 +155,17 @@ const DashboardCoach = () => {
                         <div class="card-header py-3">
                             <div className="plancarrera-text">Plan Carrera</div>
                         </div>
-
                         {planes_carreras.map((plan, index) => (
-                            <div key={index}>
-                                <p>nombre colaborador : {plan.nombre_colaborador}</p>
-                                <p> descripcion : {plan.descripcion}</p>
-                                <p>unidades estimadas : {plan.unidades_estimadas}</p>
-                                <p>es de pago : {plan.pago}</p>
-                                <p>duracion en meses : {plan.meses_realizacion}</p>
-                                <p>colaborador lider : {plan.colaborador_lider}</p>
+                            <div key={index} className="activity-container mb-4">
+                                <p>Colaborador: {plan.nombre_colaborador}</p>
+                                <p>Descripcion: {plan.descripcion}</p>
+                                <p>UDP: {plan.unidades_estimadas}</p>
+                                <p>Es de pago: {plan.pago}</p>
+                                {/* <p>Duracion en meses : {plan.meses_realizacion}</p> */}
+                                <p>Coach lider : {plan.coach_lider}</p>
                                 <p>fecha inicio : {plan.fecha_inicio}</p>
                             </div>
                         ))}
-
                         <div class="card-body">
                             {/* Boton formulario Plan carrera */}
                             <Button onClick={() => navigatePlanForm()}>

@@ -1,8 +1,12 @@
 import React from "react";
+import { FormControl, Button } from 'react-bootstrap';
 
 const PerfilDirectivo = () =>{
     return(
         <div class="card shadow mb-4">
+            <head>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+            </head>
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Perfil</h6>
                 </div>
