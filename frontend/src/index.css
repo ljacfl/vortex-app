@@ -431,6 +431,9 @@ main {
   margin: auto
 }
 
+.table{
+  color: #ff0000;
+}
 
 
 .collaborator-photo {
@@ -557,7 +560,7 @@ main {
 
 .text-area{
   color: #000000;
-}
+}-task
 
 .campos-obligatorios {
   color: #ffffff;
@@ -565,3 +568,118 @@ main {
   font-family: sans-serif;
   font-style: italic;
 }
+
+
+/*ESTILOS TASK*/
+
+/* ESTILOS TASK */
+.card-task {
+  border: 5px solid rgba(255, 255, 255, 0.125);
+  border-radius: 1rem;
+  background-clip: border-box;
+  background-color: #1e293a;
+}
+
+.title-task {
+  margin: 0;
+  color: #f28d27;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.header-task {
+  padding: 15px 30px 0px;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.header-task h1,
+.header-task h2,
+.header-task h3,
+.header-task h4,
+.header-task h5,
+.header-task h6 {
+  margin: 15px 0;
+  color: #f28d27;
+  letter-spacing: 1px;
+  line-height: 17px;
+  font-weight: 300;
+}
+
+.header-task p {
+  color: #000000;
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: 300;
+}
+
+.content-task {
+  padding: 10px 30px 20px 30px;
+  
+}
+
+.footer-task {
+  padding: 0 30px 5px;
+  background-color: transparent;
+  line-height: 30px;
+}
+
+.footer-task hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-color: #f28d27;
+}
+
+.form-group-task label,
+fieldset label {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 300;
+}
+
+.form-group-task label.control-label {
+  color: #25265F;
+  text-transform: uppercase;
+}
+
+.form-group-task label.error-task {
+  text-transform: none;
+  color: #FB404B;
+  margin-top: 5px;
+}
+
+.todo-item-task {
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 1rem;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.todo-item-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  color: #ff0000;
+  margin-right: 10px;
+}
+
+.checkbox .icons .first-icon,
+.checkbox .icons .second-icon {
+  width: 17px;
+}
+
+.todo-content-task {
+  flex: 1;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 300;
+}
+
+.todo-item-wrapper a {
+  color: #ffffff;
+  cursor: pointer;
+}
+

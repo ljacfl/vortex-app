@@ -18,6 +18,8 @@ import Recompensas from "./components/Recompensas";
 import Recomendaciones from "./pages/Recomendaciones"
 import EquipoCoach from "./components/EquipoCoach";
 
+import Tasks from "./components/Tasks";
+
 
 
 import PlanCarrera from "./pages/PlanCarrera";
@@ -43,6 +45,8 @@ function App() {
             <Route path="/login" element={user ? <Navigate to="/" /> : <Login setUser={setUser} selectedRole={selectedRole} onChange={(evt) => setSelectedRole(evt.target.value)} />} />
             <Route path="/register" element={<RegisterPage />} />
             
+            <Route path="/tasks" element={<Tasks />} />
+
             <Route path="/add-cursos" element={<h1> new curso </h1>} />
             <Route path="/add-planes_carreras" element={<h1> new curso </h1>} />
             <Route path="/cursos/:id" element={<h1> update curso</h1>} />
