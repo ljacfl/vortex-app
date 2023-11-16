@@ -72,6 +72,7 @@ function App() {
                       <Route index element={<DashboardCoach />} />
                       <Route path="perfil" element={<PerfilCoach/>} />
                       <Route path="informacion" element={<Recomendaciones/>}/>
+                      
                     </>
                   )}
                   {selectedRole === "Directivo" && (

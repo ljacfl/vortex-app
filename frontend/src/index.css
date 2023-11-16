@@ -567,6 +567,14 @@ main {
   text-align: center;
 }
 
+.h1-plan-carrera{
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.0rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
 .h1-actividades {
   color: #ffffff;
   font-family: 'Roboto', sans-serif;

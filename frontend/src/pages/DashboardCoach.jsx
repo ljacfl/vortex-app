@@ -52,12 +52,49 @@ const DashboardCoach = () => {
         }
     };
 
+    const handleAprobarPlan = () => {
+        // Lógica para aprobar el plan de carrera (si es necesario)
+        
+        // Muestra la notificación
+        showNotification('Plan carrera aprobado', 'success');
+      };
+
     const navigatePlanForm = () => {
         Navigate('planForm')
     }
+
+    // Estado para controlar la visibilidad de la interfaz de notificaciones
+    const [mostrarNotificaciones, setMostrarNotificaciones] = useState(false);
+
+    // Función para mostrar/ocultar la interfaz de notificaciones
+    const toggleNotificaciones = () => {
+        setMostrarNotificaciones(!mostrarNotificaciones);
+    };
+
     return (
         <div class="container-fluid">
             <br></br>
+
+            <div className="d-flexjustify-content-end">
+                <button className="btn btn-link notificaciones-button" onClick={toggleNotificaciones}>
+                    <img src="campana.png" alt className="Notificaciones" />
+                </button>
+
+            </div>
+
+            {mostrarNotificaciones && (
+                <div className="notificaciones-overlay">
+                    <h1>Notificaciones</h1>
+                    <p>Álvaro Tabares ha creado una propuesta de plan carrera.</p>
+                    <p>Valeria Rivera añadió una nueva evidencia.</p>
+                    <p>Álvaro tabares ha realizado una recomendación.</p>
+
+                </div>
+            )}
+
+
+
+
             <div className="text-900 text-3xl font-medium mb-3 welcome-text">Inicio - Coach</div>
             <img src="raul.png" alt className=" perfil-alvaro " />
             <div className="card_resumen mb-4">
@@ -118,28 +155,60 @@ const DashboardCoach = () => {
                 </div>
             </div>
             <div class="row">
-                
+
                 <div class="col-lg-6">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <div className="plancarrera-text">Plan Carrera</div>
                         </div>
+                        <br></br>
                         {planes_carreras.map((plan, index) => (
                             <div key={index} className="activity-container mb-4">
-                                <p>Colaborador: {plan.nombre_colaborador}</p>
-                                <div className='h1-cursos mb-2'>Nombre colaborador: {plan.nombre_colaborador}</div>
-                                <p>Descripcion: {plan.descripcion}</p>
-                                <div className='h1-cursos mb-2'>Descripcion: {plan.descripcion}</div>
-                                <p>UDP: {plan.unidades_estimadas}</p>
-                                <p>Es de pago: {plan.pago}</p>
-                                <p>Duracion en meses : {plan.meses_realizacion}</p>
-                                <p>Coach lider : {plan.coach_lider}</p>
-                                <p>fecha inicio : {plan.fecha_inicio}</p>
+                                {/* <p>Colaborador: {plan.nombre_colaborador}</p>
+                                <p>Coach lider: {plan.coach_lider}</p>
+                                <p>Rol: {plan.rol}</p>
+                                <p>Split: {plan.split}</p> */}
+                                {/* <p>Fecha: {plan.createdAt}</p> */}
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div className='h1-plan-carrera mb-2'>Colaborador: {plan.nombre_colaborador}</div>
+
+                                    </div>
+                                    <div class="col">
+                                        <div className='h1-plan-carrera mb-2'>Coach lider: {plan.coach_lider}</div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div className='h1-plan-carrera mb-2'>Rol: {plan.rol}</div>
+
+                                    </div>
+                                    <div class="col">
+                                        <div className='h1-plan-carrera mb-2'>Split: {plan.split}</div>
+                                    </div>
+
+                                </div>
+                                <div className="row">
+                                    <div className="col-lg-6">
+                                    <Button onClick={handleAprobarPlan}>Aprobar</Button>
+                                    </div>
+                                    <div className="col-lg-6">
+                                        <Link to="/cursos">
+
+                                            <Button >Ver más</Button>
+                                        </Link>
+                                    </div>
+
+                                </div>
+                                <br></br>
                             </div>
                         ))}
                         <div class="card-body">
                             {/* Boton formulario Plan carrera */}
-                           
+
 
                             {/* Mostrar el formulario si mostrarFormulario es verdadero */}
                             {mostrarFormulario && <FormatoPlan onFormSubmit={handleFormSubmit} />}

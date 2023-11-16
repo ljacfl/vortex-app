@@ -60,7 +60,7 @@ const Recomendaciones = () => {
                         <div className="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <div className='valor'>Split (Octubre-Diciembre): </div>
+                                    <div className='valor'>Split: </div>
                                 </div>
                                 <img src="/trofeo.png" alt="Trofeo" />
                             </div>
