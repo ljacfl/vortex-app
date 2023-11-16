@@ -1,41 +1,22 @@
 import mongoose from "mongoose";
 
 const cursoSchema = new mongoose.Schema({
-    nombre: {
+    tipo_unidad_desarrollo: {    
         type: String,
-        required:true
+      
       },
-      descripcion: {
+      pago: {
         type: String
       },
-      modalidad: {
-        type: String
-      },
-      institucion: {
-        type: String
-      },
-      estado: {
+      meses_realizacion: {
         type: String
       },
       unidades_estimadas: {
         type: String
       },
-      fecha_inicio: {
-        type: Date,
-        default:Date.now
-      },
-      fecha_fin: {
-        type: Date
-      },
-      puntos_a_obtener: {
-        type: Number
-      },
-      User: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      }
-},{
-   timestamps:true
+      descripcion: {
+        type: String
+},
 })
 
 export default mongoose.model ("curso",cursoSchema)

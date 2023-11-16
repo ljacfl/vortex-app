@@ -5,24 +5,14 @@ const plan_carreraSchema = new mongoose.Schema({
         type: String,
         required:true
       },
-      descripcion: {
+    coach_lider: {
+      type: String
+    },
+    rol:{
+      type:String
+    },
+      split: {
         type: String
-      },
-      unidades_estimadas: {
-        type: String
-      },
-    pago: {
-      type: String
-    },
-    meses_realizacion: {
-      type: String
-    },
-    colaborador_lider: {
-      type: String
-    },
-      fecha_inicio: {
-        type: Date,
-        default:Date.now
       },
       
 },{

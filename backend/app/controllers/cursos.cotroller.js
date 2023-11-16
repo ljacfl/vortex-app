@@ -7,21 +7,16 @@ export const getCursos = async (req,res) => {
 }
 
 export const createCursos = async (req,res) => {
-    const {nombre, descripcion,modalidad, institucion, estado, unidades_Estimadas, fecha_inicio, fecha_fin,puntos_a_obtener} = req.body
+    const {tipo_unidad_desarrollo, pago, meses_realizacion, unidades_estimadas, descripcion} = req.body
     
     console.log(req.user)
 
     const newCurso = new curso({
-       nombre,
-       descripcion,
-       modalidad,
-       institucion,
-       estado,
-       unidades_Estimadas, 
-       fecha_inicio, 
-       fecha_fin,
-       puntos_a_obtener,
-       user: req.user.id
+        tipo_unidad_desarrollo, 
+        pago, 
+        meses_realizacion, 
+        unidades_estimadas, 
+        descripcion
     })
 const savedCurso = await newCurso.save()
 res.json(savedCurso)

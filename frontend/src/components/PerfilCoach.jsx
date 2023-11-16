@@ -31,19 +31,19 @@ const PerfilCoach = () =>{
                                         <FormControl type="text" className="form-control mb-1" value="RCollazos" />
                                     </div>
                                     <div className="form-group">
-                                        <label className="form-label">Name</label>
+                                        <label className="form-label">Nombre</label>
                                         <FormControl type="text" className="form-control" value="Raúl Collazos" />
                                     </div>
                                     <div className="form-group">
-                                        <label className="form-label">E-mail</label>
+                                        <label className="form-label">Correo eletrónico</label>
                                         <FormControl type="text" className="form-control mb-1" value="raul@vortexbird.com" />
                                         <div className="alert alert-warning mt-3">
-                                            Your email is not confirmed. Please check your inbox.
-                                            <a href="javascript:void(0)">Resend confirmation</a>
+                                            Su correo no ha sido confirmado. Porfavor revise su bandeja de entrada.
+                                            <a href="javascript:void(0)">Reenviar confirmación</a>
                                         </div>
                                     </div>
                                     <div className="form-group">
-                                        <label className="form-label">Company</label>
+                                        <label className="form-label">Compañia</label>
                                         <FormControl type="text" className="form-control" value="VortexBird Ltd." />
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@ const PerfilCoach = () =>{
                         </div>
                     </div>
                     <div className="text-right mt-3">
-                        <Button variant="primary">Save changes</Button>&nbsp;
+                        <Button variant="primary">Guardar</Button>&nbsp;
                     </div>
     
     

@@ -71,12 +71,14 @@ function App() {
                     <>
                       <Route index element={<DashboardCoach />} />
                       <Route path="perfil" element={<PerfilCoach/>} />
+                      <Route path="informacion" element={<Recomendaciones/>}/>
                     </>
                   )}
                   {selectedRole === "Directivo" && (
                     <>
                       <Route index element={<DashboardDirectivo />} />
                       <Route path="perfil" element={<PerfilDirectivo/>} />
+                      <Route path="/informacion" element={<h1>Proximamente!</h1>} />
                     </>
                   )}                  
                   <Route path="/plan-carrera" element={<PlanCarrera />} />

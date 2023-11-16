@@ -185,10 +185,12 @@ const Cursos = () => {
                 </div>
 
             </div>
-
+<div>
             <Link to="/plan-carrera">
                 <Button>Volver</Button>
             </Link>
+            </div>
+            <br></br>
 
         </Container>
 

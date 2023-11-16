@@ -10,32 +10,27 @@ const DashboardDirectivo = () => {
     const [todos, setTodos] = useState([
         {
             id: 1,
-            content: 'Sign contract for "What are conference organizers afraid of?"',
+            content: 'Realizar reporte de planes carrera split Enero-Marzo',
             completed: true,
         },
         {
             id: 2,
-            content: 'Lines From Great Russian Literature? Or E-mails From My Boss?',
+            content: 'Evaluar el progreso de los coach y colaboradores',
             completed: true,
         },
         {
             id: 3,
-            content: 'Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit',
+            content: 'Revisar cursos de pago de planes carrera',
             completed: true,
         },
         {
             id: 4,
-            content: 'Create 4 Invisible User Experiences you Never Knew About',
+            content: 'Actualizar los premios del split',
             completed: false,
         },
         {
             id: 5,
-            content: 'Read "Following makes Medium better"',
-            completed: false,
-        },
-        {
-            id: 6,
-            content: 'Lines From Great Russian Literature? Or E-mails From My Boss?',
+            content: 'Realizar reunion con coachs',
             completed: false,
         },
     ]);
@@ -63,12 +58,12 @@ const DashboardDirectivo = () => {
         setMostrarNotificaciones(!mostrarNotificaciones);
     };
 
-    
+
     return (
         <div className="container-fluid">
             <div className="dashboard-directivo">
 
-            <div className="d-flexjustify-content-end">
+                <div className="d-flexjustify-content-end">
                     <button className="btn btn-link notificaciones-button" onClick={toggleNotificaciones}>
                         <img src="campana.png" alt className="Notificaciones" />
                     </button>
@@ -139,7 +134,7 @@ const DashboardDirectivo = () => {
                     <div className="col-lg-6">
                         <div className="card shadow mb-4">
                             <div className="card-header py-3">
-                                <h6 className="h3">Tareas</h6>
+                                <div className="resume-text">Tareas</div>
                             </div>
 
                             <div className="content-task">
@@ -157,59 +152,34 @@ const DashboardDirectivo = () => {
                                     ))}
                                 </form>
                             </div>
-                            <div className="footer">
-                                <hr />
-                                <div className="stats">
-                                    <i className="fa fa-history"></i> Updated 3 minutes ago
+                            
+
+                            <div className="row">
+                                <div className="col-lg-6">
+                                    <Button>Nueva tarea</Button>
                                 </div>
+                               
                             </div>
-
-                            <ul class="Estadisticas">
-                                <div className='fuente-form'>
-                                    <h4>Estádisticas</h4>
-                                </div>
-
-                                <div className="row">
-                                    <div className="col-lg-6">
-                                        <div class="card bg-primary text-white shadow">
-
-                                            <p>Balance UDP</p>
-
-                                            <img src="diagrama.png " class="img_estadistica" />
-                                        </div>
-                                    </div>
-                                    <br></br>
-
-                                    <div className="col-lg-6">
-                                        <div class="card bg-primary text-white shadow">
-                                            <p>Balance UDP</p>
-                                            <img src="diagrama.png " class="img_estadistica" />
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </ul>
                         </div>
                     </div>
 
                     <div className="col-lg-6">
                         <div className="card shadow mb-4">
                             <div className="card-header py-3">
-                                <h6 className="h3">Gamificación</h6>
+                                <div className="resume-text">Premios</div>
                             </div>
                             <div className="card-body">
-                                <img src="/trofeo.png" alt="Trofeo" />
-                                <h1>Premios primer split</h1>
-                                <p>¡Redime tus puntos!</p>
-
+                                <div class="row">
+                                    <div class="col">
+                                        <div className='valor'>Split (Octubre-Diciembre): </div>
+                                    </div>
+                                    <img src="/trofeo.png" alt="Trofeo" />
+                                </div>
+                                <div className='h1-premios mb-2'>¡Redime tus puntos!</div>
                                 <div className="text-right mt-3">
-
                                     <Link to="/recompensas">
-                                        <Button variant="primary">Ver Recompensas</Button>
+                                        <Button className='btn-primary'>Ver Recompensas</Button>
                                     </Link>
-
-
                                 </div>
                             </div>
                         </div>

@@ -11,3 +11,12 @@ axios.put(`/Planes_carreras/${plan_carrera._id}`,plan_carrera)
 
 export const deletePlanes_carrerasRequest = (id) => axios.delete(`/Planes_carreras/${id}`)
 
+export const createAvanceRequest = async (data) => axios.post('/avances', data)
+
+export const getAvancesRequest = async () => axios.get('/avances')
+
+
+export const createActividadRequest = async (data) => axios.post('/cursos', data)
+
+export const getActividadesRequest = async () => axios.get('/cursos')
+

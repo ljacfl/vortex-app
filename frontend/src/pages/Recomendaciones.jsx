@@ -55,12 +55,12 @@ const Recomendaciones = () => {
                 <div className="col-lg-6">
                     <div className="card_resumen mb-4">
                         <div className="card-header py-3">
-                            <div className="resume-text">Gamificación</div>
+                            <div className="resume-text">Premios</div>
                         </div>
                         <div className="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <div className='valor'>Premios primer split: </div>
+                                    <div className='valor'>Split (Octubre-Diciembre): </div>
                                 </div>
                                 <img src="/trofeo.png" alt="Trofeo" />
                             </div>

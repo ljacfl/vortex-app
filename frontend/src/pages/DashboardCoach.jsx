@@ -22,7 +22,7 @@ const DashboardCoach = () => {
         setMostrarFormulario(false);
     };
 
-    const { planes_carreras, getPlanes_carreras } = usePlanes_Carreras()
+    const { planes_carreras, getPlanes_carreras, loadActividades, actividades } = usePlanes_Carreras()
 
     useEffect(() => {
         // Inicializar el estado con tareas predeterminadas
@@ -32,6 +32,7 @@ const DashboardCoach = () => {
             'Mejorar habilidades de resolución de problemas.'
         ];
         setOutputText(initialTasks.map(task => `\n\u2022 ${task}`).join(''));
+        loadActividades()
         getPlanes_carreras()
     }, []);
 
@@ -54,41 +55,9 @@ const DashboardCoach = () => {
     const navigatePlanForm = () => {
         Navigate('planForm')
     }
-
-    // Estado para controlar la visibilidad de la interfaz de notificaciones
-    const [mostrarNotificaciones, setMostrarNotificaciones] = useState(false);
-
-    // Función para mostrar/ocultar la interfaz de notificaciones
-    const toggleNotificaciones = () => {
-        setMostrarNotificaciones(!mostrarNotificaciones);
-    };
-
-
-
-
     return (
         <div class="container-fluid">
             <br></br>
-
-            <div className="d-flexjustify-content-end">
-                <button className="btn btn-link notificaciones-button" onClick={toggleNotificaciones}>
-                    <img src="campana.png" alt className="Notificaciones" />
-                </button>
-
-            </div>
-
-            {mostrarNotificaciones && (
-                <div className="notificaciones-overlay">
-                  <h1>Notificaciones</h1>
-                  <p>Álvaro Tabares ha creado una propuesta de plan carrera.</p>
-                  <p>Valeria Rivera añadió una nueva evidencia.</p>
-                  <p>Álvaro tabares ha realizado una recomendación.</p>
-  
-                </div>
-            )}
-
-
-
             <div className="text-900 text-3xl font-medium mb-3 welcome-text">Inicio - Coach</div>
             <img src="raul.png" alt className=" perfil-alvaro " />
             <div className="card_resumen mb-4">
@@ -149,40 +118,7 @@ const DashboardCoach = () => {
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <div className="recomendaciones-text">Recomendaciones</div>
-                        </div>
-                        <div className="card-body">
-                            <div className="text-area">
-                                <textarea
-                                    id="outputTextArea"
-                                    class="form-control"
-                                    rows="10"
-                                    value={outputText}
-                                    readOnly
-                                ></textarea>
-                            </div>
-                            <label htmlFor="inputTextArea">Agregar nueva recomendacion:</label>
-                            <div class="text-area">
-                                
-                                <textarea
-                                    id="inputTextArea"
-                                    class="form-control"
-                                    rows="4"
-                                    value={inputText}
-                                    onChange={handleInputChange}
-                                ></textarea>
-                            </div>
-
-                            <Button class="btn btn-primary" onClick={handleSaveButtonClick}>
-                                Almacenar y Mostrar
-                            </Button>
-                            
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="col-lg-6">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -191,19 +127,19 @@ const DashboardCoach = () => {
                         {planes_carreras.map((plan, index) => (
                             <div key={index} className="activity-container mb-4">
                                 <p>Colaborador: {plan.nombre_colaborador}</p>
+                                <div className='h1-cursos mb-2'>Nombre colaborador: {plan.nombre_colaborador}</div>
                                 <p>Descripcion: {plan.descripcion}</p>
+                                <div className='h1-cursos mb-2'>Descripcion: {plan.descripcion}</div>
                                 <p>UDP: {plan.unidades_estimadas}</p>
                                 <p>Es de pago: {plan.pago}</p>
-                                {/* <p>Duracion en meses : {plan.meses_realizacion}</p> */}
+                                <p>Duracion en meses : {plan.meses_realizacion}</p>
                                 <p>Coach lider : {plan.coach_lider}</p>
                                 <p>fecha inicio : {plan.fecha_inicio}</p>
                             </div>
                         ))}
                         <div class="card-body">
                             {/* Boton formulario Plan carrera */}
-                            <Button onClick={() => navigatePlanForm()}>
-                                Crear Plan Carrera
-                            </Button>
+                           
 
                             {/* Mostrar el formulario si mostrarFormulario es verdadero */}
                             {mostrarFormulario && <FormatoPlan onFormSubmit={handleFormSubmit} />}
@@ -228,6 +164,18 @@ const DashboardCoach = () => {
                                     </ul>
                                 </div>
                             )}
+
+                            {actividades.map((actividad, index) => (
+                                <div key={index} className="activity-container"
+                                    style={{ backgroundColor: '#00B8A9', borderRadius: '1rem' }}>
+                                    <h4 className="text-white">Tipo de unidad: {actividad.tipo_unidad_desarrollo}</h4>
+                                    <p className="text-white">Es de pago: {actividad.pago}</p>
+                                    <p className="text-white">Meses realizaciòn: {actividad.meses_realizacion}</p>
+                                    <p className="text-white">Unidades estimadas: {actividad.unidades_estimadas}</p>
+                                    <p className="text-white">descripcion : {actividad.descripcion}</p>
+                                    <br></br>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

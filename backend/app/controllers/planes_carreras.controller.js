@@ -8,18 +8,15 @@ export const getPlanes_carreras = async (req,res) => {
 }
 
 export const createPlanes_carreras = async (req,res) => {
-    const {nombre_colaborador, descripcion,unidades_estimadas, pago, meses_realizacion, colaborador_lider, fecha_inicio} = req.body
+    const {nombre_colaborador, coach_lider,rol,split} = req.body
     
     console.log(req.user)
 
     const newPlan_carrera = new plan_carrera({
         nombre_colaborador, 
-        descripcion,
-        unidades_estimadas, 
-        pago, 
-        meses_realizacion, 
-        colaborador_lider, 
-        fecha_inicio
+        coach_lider,
+        rol,
+        split
     })
 const savedPlan_carrera = await newPlan_carrera.save()
 res.json(savedPlan_carrera)

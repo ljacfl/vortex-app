@@ -8,6 +8,7 @@ import NumericInput from 'react-numeric-input';
 
 import 'react-toastify/dist/ReactToastify.css'; // Importa los estilos CSS de react-toastify
 import { ToastContainer, toast } from 'react-toastify';
+import { usePlanes_Carreras } from '../context/Context';
 
 const DashboardColaborador = ({ user }) => {
 
@@ -67,6 +68,8 @@ const DashboardColaborador = ({ user }) => {
     'Actividad 8': 20,
   });
 
+  const { createAvances, createPlanes_carreras, createActividades } = usePlanes_Carreras()
+
   // Función para obtener el texto de la actividad
   const getActividadText = (actividadNum) => {
     switch (actividadNum) {
@@ -95,9 +98,26 @@ const DashboardColaborador = ({ user }) => {
 
 
   const [registro, setRegistro] = useState({
-    colaborador: '',
+    nombre_colaborador: '',
     fecha: '',
-    unidadesRealizadas: 0,
+    unidades_realizadas: 0,
+    numero_actvidad: ''
+  });
+
+  const [registroPlan, setRegistroPlan] = useState({
+    nombre_colaborador: '',
+    fecha: '',
+    unidades_realizadas: 0,
+    numero_actvidad: ''
+  });
+
+
+  const [registroActividad, setRegistroActividad] = useState({
+    tipo_unidad_desarrollo: '',
+    pago: '',
+    meses_realizacion: 0,
+    unidades_estimadas: '',
+    descripcion: ''
   });
 
 
@@ -129,28 +149,35 @@ const DashboardColaborador = ({ user }) => {
     return true;
   };
 
-  const handleGuardarAvanceClick = () => {
-    const { colaborador, fecha, unidadesRealizadas } = registro;
+  const handleCrearPlan = async () => {
+    await createPlanes_carreras(registroPlan)
+    showNotification('Guardado exitosamente', 'success');
+  }
+
+  const handleGuardarActividad = async () => {
+    await createActividades(registroActividad)
+    showNotification('Guardado exitosamente', 'success');
+  }
+
+  const handleGuardarAvanceClick = async () => {
+    const { nombre_colaborador, unidades_realizadas, numero_actvidad} = registro;
+
+    console.log(registro);
+    await createAvances(registro)
 
     // Verifica si el colaborador está vacío
-    if (!colaborador) {
+    if (!nombre_colaborador) {
       showNotification('Por favor, ingresa el nombre del colaborador', 'error');
       return;
     }
 
-    // Verifica si la fecha está vacía
-    if (!fecha) {
-      showNotification('Por favor, ingresa la fecha', 'error');
-      return;
-    }
-
     // Verifica si las unidades realizadas no son un número válido
-    if (isNaN(unidadesRealizadas) || unidadesRealizadas <= 0) {
+    if (isNaN(unidades_realizadas) || unidades_realizadas <= 0) {
       showNotification('Por favor, ingresa un número válido de unidades realizadas', 'error');
       return;
     }
 
-    if (!selectedActividad) {
+    if (!numero_actvidad) {
       // No se ha seleccionado ninguna actividad
       showNotification('Por favor, selecciona una actividad', 'error');
       return;
@@ -508,12 +535,12 @@ const DashboardColaborador = ({ user }) => {
             </div>
             <br></br>
             <div className="activity-container">
-              <div className='valor'>Semi-senior: </div>
+              <div className='valor'>Senior: </div>
               <div class="row">
                 <div class="col">
 
-                  <div className='h1-titulos-proyectos'>Aplicación móvil:</div>
-                  <div className='h1-tecnologias-proyectos'>Requisitos: Java, Kotlin, Flutter</div>
+                  <div className='h1-titulos-proyectos'>Aplicación realidad aumentada:</div>
+                  <div className='h1-tecnologias-proyectos'>Requisitos: Java, Unity, Unreal Engine</div>
                 </div>
                 <div class="row">
                   <div>
@@ -528,8 +555,8 @@ const DashboardColaborador = ({ user }) => {
               <div class="row">
                 <div class="col">
 
-                  <div className='h1-titulos-proyectos'>Desarrollo de una API REST:</div>
-                  <div className='h1-tecnologias-proyectos'>Requisitos: Java, Python, Node.js</div>
+                  <div className='h1-titulos-proyectos'>Aplicación blockchain:</div>
+                  <div className='h1-tecnologias-proyectos'>Requisitos: Solidity, Ethereum</div>
                 </div>
                 <div class="row">
                   <div>
@@ -664,22 +691,10 @@ const DashboardColaborador = ({ user }) => {
                 <Container className="evidencia">
                   <label>Colaborador: </label>
                   <Form.Control
-                    id="colaborador"
+                    id="nombre_colaborador"
                     placeholder="Nombre del colaborador"
-                    value={registro.colaborador}
-                    onChange={(e) => setRegistro({ ...registro, colaborador: e.target.value })}
-                  />
-                </Container>
-              </Col>
-
-              <Col>
-                <Container className="evidencia">
-                  <label>Fecha: </label>
-                  <Form.Control
-                    id="fecha"
-                    placeholder="dd/mm/yyyy"
-                    value={registro.fecha}
-                    onChange={(e) => setRegistro({ ...registro, fecha: e.target.value })}
+                    value={registro.nombre_colaborador}
+                    onChange={(e) => setRegistro({ ...registro, nombre_colaborador: e.target.value })}
                   />
                 </Container>
               </Col>
@@ -691,26 +706,32 @@ const DashboardColaborador = ({ user }) => {
                 <Form.Label>Unidades realizadas (UDP):</Form.Label><br></br>
                 <Form.Control
                   type="number"
-                  id="unidadesRealizadas"
+                  id="unidades_realizadas"
                   name="udp"
-                  value={registro.unidadesRealizadas}
-                  onChange={(e) => setRegistro({ ...registro, unidadesRealizadas: e.target.value })}
+                  value={registro.unidades_realizadas}
+                  onChange={(e) => setRegistro({ ...registro, unidades_realizadas: e.target.value })}
                 />
               </Col>
               <Col>
 
                 <Form.Label>Seleccione la actividad: </Form.Label><br></br>
-                <Form.Select value={selectedActividad} onChange={(e) => setSelectedActividad(e.target.value)}>
+                <Form.Control
+                  as="select"
+                  id="numero_actvidad"
+                  name="udp"
+                  value={registro.numero_actvidad}
+                  onChange={(e) => setRegistro({ ...registro, numero_actvidad: e.target.value })}
+                >
                   <option>...</option>
-                  <option>Actividad 1</option>
-                  <option>Actividad 2</option>
-                  <option>Actividad 3</option>
-                  <option>Actividad 4</option>
-                  <option>Actividad 5</option>
-                  <option>Actividad 6</option>
-                  <option>Actividad 7</option>
-                  <option>Actividad 8</option>
-                </Form.Select>
+                  <option value="Actividad 1">Actividad 1</option>
+                  <option value="Actividad 2">Actividad 2</option>
+                  <option value="Actividad 3">Actividad 3</option>
+                  <option value="Actividad 4">Actividad 4</option>
+                  <option value="Actividad 5">Actividad 5</option>
+                  <option value="Actividad 6">Actividad 6</option>
+                  <option value="Actividad 7">Actividad 7</option>
+                  <option value="Actividad 8">Actividad 8</option>
+                </Form.Control>
               </Col>
             </Row>
             <br />
@@ -754,14 +775,26 @@ const DashboardColaborador = ({ user }) => {
               <Col>
                 <Container className="evidencia">
                   <label>Colaborador: </label>
-                  <Form.Control id="colaborador" name="colaborador" placeholder="Nombre del colaborador" />
+                  <Form.Control
+                    type="text"
+                    id="nombre_colaborador"
+                    placeholder="Nombre del colaborador"
+                    value={registroPlan.nombre_colaborador}
+                    onChange={(e) => setRegistroPlan({ ...registroPlan, nombre_colaborador: e.target.value })}
+                  />
                 </Container>
               </Col>
 
               <Col>
                 <Container className="evidencia">
                   <label>Coach lider: </label>
-                  <Form.Control id="coachLider" name="coachLider" placeholder="Nombre del coach lider" />
+                  <Form.Control
+                    type="text"
+                    id="coach_lider"
+                    placeholder="Nombre del coach lider"
+                    value={registroPlan.coach_lider}
+                    onChange={(e) => setRegistroPlan({ ...registroPlan, coach_lider: e.target.value })}
+                  />
                 </Container>
               </Col>
             </Row>
@@ -772,14 +805,26 @@ const DashboardColaborador = ({ user }) => {
               <Col>
                 <Container className="evidencia">
                   <label>Rol que desempeña: </label>
-                  <Form.Control id="rolDesempena" name="rolDesempena" placeholder="Junior/Semi-senior/Senior" />
+                  <Form.Control
+                    placeholder="Junior/Semi-senior/Senior"
+                    type="text"
+                    id="rol"
+                    value={registroPlan.rol}
+                    onChange={(e) => setRegistroPlan({ ...registroPlan, rol: e.target.value })}
+                  />
                 </Container>
               </Col>
 
               <Col>
                 <Container className="evidencia">
                   <label>Split: </label>
-                  <Form.Control id="split" name="split" placeholder="Enero - Marzo" />
+                  <Form.Control
+                    type="text"
+                    id="split"
+                    placeholder="Enero - Marzo"
+                    value={registroPlan.split}
+                    onChange={(e) => setRegistroPlan({ ...registroPlan, split: e.target.value })}
+                  />
                 </Container>
               </Col>
             </Row>
@@ -802,32 +847,56 @@ const DashboardColaborador = ({ user }) => {
                   <Col>
                     <Form.Label htmlFor={`tipoUnidadDesarrollo${actividad.numero}`}>Tipo de unidad de desarrollo: </Form.Label>
                     <Form.Select
-                      id={`tipoUnidadDesarrollo${actividad.numero}`}
-                      name={`tipoUnidadDesarrollo${actividad.numero}`}
-                      defaultValue="Choose..."
-                      onChange={(e) => handleTipoUnidadDesarrolloChange(e, actividad.numero)}
+                      as="select"
+                      id="tipo_unidad_desarrollo"
+                      value={registroActividad.tipo_unidad_desarrollo}
+                      onChange={(e) => setRegistroActividad({ ...registroActividad, tipo_unidad_desarrollo: e.target.value })}
                     >
                       <option>...</option>
-                      <option>Desarrollo Profesional</option>
-                      <option>Crecimiento personal</option>
-                      <option>Retorno vortex</option>
+                      <option value="Desarrollo profesional">Desarrollo Profesional</option>
+                      <option value="Crecimiento personal">Crecimiento personal</option>
+                      <option value="Retorno Vortex">Retorno vortex</option>
+
                     </Form.Select><br></br><br></br>
                     <Form.Label htmlFor={`mesesRealizacion${actividad.numero}`}>Meses de realizacion:</Form.Label>
-                    <Form.Group md="4">
-                      <NumericInput id={`mesesRealizacion${actividad.numero}`} name={`mesesRealizacion${actividad.numero}`} min={0} max={50} value={0} />
-                    </Form.Group>
+                    <Form.Control
+                      type="number"
+                      id="meses_realizacion"
+                      value={registroActividad.meses_realizacion}
+                      onChange={(e) => setRegistroActividad({ ...registroActividad, meses_realizacion: e.target.value })}
+                    />
                   </Col>
                   <Col>
-                    <Form.Label htmlFor={`esDePago${actividad.numero}`}>Es de pago:</Form.Label>
-                    <Form.Check id={`esDePago${actividad.numero}`} name={`esDePago${actividad.numero}`} type="checkbox" label="✔" /><br></br>
+                  <Form.Label htmlFor={`esDePago${actividad.numero}`}>Es de pago:</Form.Label>
+                    <Form.Control
+                      as="select"
+                      id="pago"
+                      value={registroActividad.pago}
+                      onChange={(e) => setRegistroActividad({ ...registroActividad, pago: e.target.value })}
+                    >
+                      <option value="Si">Si</option>
+                      <option value="No">No</option>
+
+
+
+                    </Form.Control><br></br><br></br><br></br>
+
                     <Form.Label htmlFor={`unidadesEstimadas${actividad.numero}`}>Unidades estimadas:</Form.Label>
-                    <NumericInput id={`unidadesEstimadas${actividad.numero}`} name={`unidadesEstimadas${actividad.numero}`} min={0} max={50} value={0} />
+                    <Form.Control
+                      type="number"
+                      id="unidades_estimadas"
+                      value={registroActividad.unidades_estimadas}
+                      onChange={(e) => setRegistroActividad({ ...registroActividad, unidades_estimadas: e.target.value })}
+                    />
                   </Col>
+
                   <Col>
                     <Form.Label htmlFor={`descripcion${actividad.numero}`}>Descripción:</Form.Label>
                     <Form.Control
-                      id={`descripcion${actividad.numero}`}
-                      name={`descripcion${actividad.numero}`}
+                      type="text"
+                      id="descripcion"
+                      value={registroActividad.descripcion}
+                      onChange={(e) => setRegistroActividad({ ...registroActividad, descripcion: e.target.value })}
                       as="textarea"
                       placeholder="Descripción de la actividad"
                       style={{ height: '99px', width: '300px' }}
@@ -836,6 +905,7 @@ const DashboardColaborador = ({ user }) => {
                 </Row>
                 <br></br>
                 <Button onClick={() => handleEliminarActividadClick(actividad.numero)}>Eliminar actividad</Button>
+                <Button onClick={() => handleGuardarActividad()}>Guardar actividad</Button>
                 <br></br>
                 <br></br>
                 <hr className="border-light" />
@@ -845,7 +915,7 @@ const DashboardColaborador = ({ user }) => {
             ))}
             <br />
 
-            <Button variant="primary" onClick={handleCrearActividad}>Guardar</Button>
+            <Button variant="primary" onClick={handleCrearPlan}>Guardar Plan</Button>
           </Form>
           <br />
         </div>

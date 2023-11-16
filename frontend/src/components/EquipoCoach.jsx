@@ -5,19 +5,19 @@ const EquipoCoach = () => {
     return (
         <div className="card shadow mb-4">
             <div className="card-header py-3">
-                <h6 className="h3">Equipo</h6>
+            <div className='resume-text'>Equipo</div>
             </div>
             <div className="card-body">
 
                 <div class="card bg-primary text-white shadow">
                     <div className="collaborator">
                         <img src="alvaro.png" alt className=" perfil-alvaro " />
-                        <div className="h3">Alvaro Tabares</div>
+                        <div className='valor'>Álvaro Tabares </div>
                         <div class="text-white-70">Colaborador</div>
                         <h4 class="text-gray-800">Progreso</h4>
 
                         <div role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                            <div className="progress-bar text-bg-warning mb-2" style={{ width: '60%' }}>60%</div>
+                            <div className="progress-bar text-bg-warning mb-2" style={{ width: '56%' }}>56%</div>
                         </div>
                         <br></br>
                         <Link to="/plan-carrera">
@@ -35,9 +35,9 @@ const EquipoCoach = () => {
                     <div class="card-body-1">
                         <div className="collaborator">
                             <img src="user.png" alt className=" perfil-alvaro " />
-                            <div className="h3">Valeria Rivera</div>
+                            <div className='valor'>Valeria Rivas </div>
                             <div class="text-white-70">Colaborador</div>
-
+                            <h4 class="text-gray-800">Progreso</h4>
 
                             <div role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                                 <div className="progress-bar text-bg-warning mb-2" style={{ width: '20%' }}>20%</div>
@@ -55,10 +55,9 @@ const EquipoCoach = () => {
                 <div class="card bg-primary text-white shadow">
                     <div className="collaborator">
                         <img src="user.png" alt className=" perfil-alvaro " />
-                        <div className="h3">Mariana Velasquez</div>
+                        <div className='valor'>Mariana Velázques </div>
                         <div class="text-white-70">Colaborador</div>
-                        <h4 class="text-gray-800">Progreso <span
-                            class="float-right">60%</span></h4>
+                        <h4 class="text-gray-800">Progreso</h4>
 
                         <div role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                             <div className="progress-bar text-bg-warning mb-2" style={{ width: '75%' }}>75%</div>

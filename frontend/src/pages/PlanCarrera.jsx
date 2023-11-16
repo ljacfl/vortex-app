@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container, Form, Card, Col, Row } from 'react-bootstrap';
+import { usePlanes_Carreras } from '../context/Context';
 
 const PlanCarrera = () => {
+
+    const { loadAvances, avances } = usePlanes_Carreras()
+
+    useEffect(() => {
+        loadAvances()
+    }, [])
+
     const [activities, setActivities] = useState([]);
     const [activity, setActivity] = useState({
         title: '',
@@ -48,118 +56,55 @@ const PlanCarrera = () => {
 
             <div className="card_resumen mb-4">
                 <div className="card-header py-3">
-                    <div class="row">
-                        <div class="col">
-                            <div className='h1-titulos mb-4'>Nivel actual:</div>
-                            <div className='h1-cursos mb-4'>Desarrollador Junior</div>
-                        </div>
-                        <div className="col" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                            <div className='h1-titulos mb-4'>Progreso Split:</div>
-                            <div className="progress-bar text-bg-warning mb-4" style={{ width: '56%' }}>56%</div>
-                        </div>
-                        <div className="col" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                            <div className='h1-titulos mb-4'>Puntos acumulados:</div>
-                            <div className='h1-cursos mb-4'>3500</div>
-                        </div>
+                    <div className='resume-text'>Estado</div>
+                </div>
+                <br></br>
+                <div class="row">
+                    <div class="col">
+                        <div className='h1-titulos mb-4'>Nivel actual:</div>
+                        <div className='h1-cursos mb-4'>Desarrollador Junior</div>
                     </div>
+                    <div className="col" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                        <div className='h1-titulos mb-4'>Progreso Split:</div>
+                        <div className="progress-bar text-bg-warning mb-4" style={{ width: '56%' }}>56%</div>
+                    </div>
+                    <div className="col" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                        <div className='h1-titulos mb-4'>Puntos acumulados:</div>
+                        <div className='h1-cursos mb-4'>3500</div>
+                    </div>
+                </div>
+                <br></br>
+                <div>
                     <Link to="/cursos">
                         <Button>Ver más</Button>
                     </Link>
                 </div>
-
-
+                <br></br>
 
             </div>
             <Row className="justify-content-center">
-                <Card>
-                    <Card.Header>
-                        <div className='resume-text'>Ingresar Nueva Actividad</div>
-                    </Card.Header>
-                    <Card.Body>
-                        <Form className='sign-in-text'>
-                            <Col>
-                                <Form.Group>
-
-                                    <Form.Label>Título: </Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="title"
-                                        value={activity.title}
-                                        onChange={handleChange}
-                                        placeholder="Nombre de la actividad"
-                                    />
-
-                                </Form.Group>
-
-
-                                <Form.Group>
-                                    <Form.Label>Descripción: </Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="description"
-                                        value={activity.description}
-                                        onChange={handleChange}
-                                        placeholder="Descripción de la actividad"
-                                    />
-                                </Form.Group>
-
-
-                                <Form.Group>
-                                    <Form.Label>Unidades de Desarrollo Profesional (UDP):</Form.Label>
-                                    <Form.Control
-                                        type="number"
-                                        name="udp"
-                                        value={activity.udp}
-                                        onChange={handleChange}
-                                    />
-                                </Form.Group>
-
-
-                                <Form.Group>
-                                    <Form.Label>Tiempo Estimado de Terminación</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="estimatedCompletionTime"
-                                        value={activity.estimatedCompletionTime}
-                                        onChange={handleChange}
-                                    />
-                                </Form.Group>
-
-
-                                <Form.Group>
-                                    <Form.Check
-                                        type="checkbox"
-                                        name="isPaid"
-                                        checked={activity.isPaid}
-                                        label="¿Es de pago?"
-                                        onChange={handleChange}
-                                    />
-                                </Form.Group>
-                            </Col>
-                            <Button onClick={handleSave}>Guardar</Button>
-                        </Form>
-                    </Card.Body>
-                </Card>
 
                 <Col md={6}>
                     <Card>
                         <Card.Header>
-                            <h3>Actividades Registradas</h3>
+                            <div className='resume-text'>Actividades Registradas</div>
                         </Card.Header>
                         <Card.Body>
-                            {activities.map((activity, index) => (
+                            {avances.map((avance, index) => (
                                 <div key={index} className="activity-container"
                                     style={{ backgroundColor: '#00B8A9', borderRadius: '1rem' }}>
-                                    <h4 className="text-white">Actividad: {activity.title}</h4>
-                                    <p className="text-white">Descripcion: {activity.description}</p>
-                                    <p className="text-white">UDP: {activity.udp}</p>
-                                    <p className="text-white">Tiempo (dias): {activity.estimatedCompletionTime}</p>
-                                    <p className="text-white">Es de Pago: {activity.isPaid ? 'Sí' : 'No'}</p>
-                                    <br></br>
+                                    <div className='h1-cursos mb-2'>Nombre colaborador: {avance.nombre_colaborador}</div>
+                                    <div className='h1-cursos mb-2'>Unidades realizadas: {avance.unidades_realizadas}</div>
+                                    <div className='h1-cursos mb-2'>Fecha de inicio: {avance.fecha_inicio}</div>
+                                    <div className='h1-cursos mb-2'>Actividad: {avance.numero_actvidad}</div>
                                 </div>
+
                             ))}
+
                         </Card.Body>
+
                     </Card>
+
                 </Col>
             </Row>
             <br></br>
