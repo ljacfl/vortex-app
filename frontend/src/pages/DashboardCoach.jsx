@@ -54,9 +54,41 @@ const DashboardCoach = () => {
     const navigatePlanForm = () => {
         Navigate('planForm')
     }
+
+    // Estado para controlar la visibilidad de la interfaz de notificaciones
+    const [mostrarNotificaciones, setMostrarNotificaciones] = useState(false);
+
+    // Función para mostrar/ocultar la interfaz de notificaciones
+    const toggleNotificaciones = () => {
+        setMostrarNotificaciones(!mostrarNotificaciones);
+    };
+
+
+
+
     return (
         <div class="container-fluid">
             <br></br>
+
+            <div className="d-flexjustify-content-end">
+                <button className="btn btn-link notificaciones-button" onClick={toggleNotificaciones}>
+                    <img src="campana.png" alt className="Notificaciones" />
+                </button>
+
+            </div>
+
+            {mostrarNotificaciones && (
+                <div className="notificaciones-overlay">
+                  <h1>Notificaciones</h1>
+                  <p>Álvaro Tabares ha creado una propuesta de plan carrera.</p>
+                  <p>Valeria Rivera añadió una nueva evidencia.</p>
+                  <p>Álvaro tabares ha realizado una recomendación.</p>
+  
+                </div>
+            )}
+
+
+
             <div className="text-900 text-3xl font-medium mb-3 welcome-text">Inicio - Coach</div>
             <img src="raul.png" alt className=" perfil-alvaro " />
             <div className="card_resumen mb-4">

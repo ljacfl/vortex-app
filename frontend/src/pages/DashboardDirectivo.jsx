@@ -54,9 +54,35 @@ const DashboardDirectivo = () => {
     const deleteTodo = (todoId) => {
         setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId));
     };
+
+    // Estado para controlar la visibilidad de la interfaz de notificaciones
+    const [mostrarNotificaciones, setMostrarNotificaciones] = useState(false);
+
+    // Función para mostrar/ocultar la interfaz de notificaciones
+    const toggleNotificaciones = () => {
+        setMostrarNotificaciones(!mostrarNotificaciones);
+    };
+
+    
     return (
         <div className="container-fluid">
             <div className="dashboard-directivo">
+
+            <div className="d-flexjustify-content-end">
+                    <button className="btn btn-link notificaciones-button" onClick={toggleNotificaciones}>
+                        <img src="campana.png" alt className="Notificaciones" />
+                    </button>
+
+                </div>
+
+                {mostrarNotificaciones && (
+                    <div className="notificaciones-overlay">
+                        <h1>Notificaciones</h1>
+                        <p>Johan Bejarano a finalizado su Split.</p>
+                        <p>Álvaro Tabares añadió una nueva actividad.</p>
+                    </div>
+                )}
+
                 <div className="text-900 text-3xl font-medium mb-3 welcome-text">Inicio - Directivo</div>
                 <img src="beatriz.png" alt className=" perfil-alvaro " />
                 <hr className="border-light m-0" />

@@ -38,7 +38,7 @@ const Recomendaciones = () => {
 
     return (
         <div className="container-fluid">
-        
+
             <head>
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet" />
             </head>
@@ -53,25 +53,33 @@ const Recomendaciones = () => {
             <div className="row">
 
                 <div className="col-lg-6">
-                    <br></br>
-                    <div className="card-body shadow mb-4">
-                        <h1>Gamificación</h1>
+                    <div className="card_resumen mb-4">
+                        <div className="card-header py-3">
+                            <div className="resume-text">Gamificación</div>
+                        </div>
                         <div className="card-body">
-                            <img src="/trofeo.png" alt="Trofeo" />
-                            <h2>Premios primer split</h2>
-                            <p>¡Redime tus puntos!</p>
+                            <div class="row">
+                                <div class="col">
+                                    <div className='valor'>Premios primer split: </div>
+                                </div>
+                                <img src="/trofeo.png" alt="Trofeo" />
+                            </div>
+                            <div className='h1-premios mb-2'>¡Redime tus puntos!</div>
                             <div className="text-right mt-3">
                                 <Link to="/recompensas">
-                                    <Button variant="primary">Ver Recompensas</Button>
+                                    <Button className='btn-primary'>Ver Recompensas</Button>
                                 </Link>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
                 <div className="col-lg-6">
-                    <br></br>
-                    <div className="card-body shadow mb-4">
-                        <h1>Actividades</h1>
+                    <div className="card_resumen mb-4">
+                        <div className="card-header py-3">
+                            <div className="resume-text">VortexChat</div>
+                        </div>
                         <div class="card-body">
                             <div class="form-group mt-4">
                                 <textarea
@@ -95,16 +103,13 @@ const Recomendaciones = () => {
                             </div>
 
                             <button class="btn btn-primary" onClick={handleSaveButtonClick}>
-                                Almacenar y Mostrar
+                                Enviar
                             </button>
                         </div>
                     </div>
+                    <br></br>
                 </div>
-
             </div>
-
-
-        
         </div>
     )
 }

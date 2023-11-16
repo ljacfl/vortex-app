@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Button, Row, Col, Form } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container';
+import { Button, Row, Col, Form, Container as BootstrapContainer, Card } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 import NumericInput from 'react-numeric-input';
@@ -19,11 +19,52 @@ const DashboardColaborador = ({ user }) => {
     contador: 0,
   });
   const [actividadCount, setActividadCount] = useState(1);
+
+  const [mostrarInterfazSecundaria, setMostrarInterfazSecundaria] = useState(false);
+
+  const [activities, setActivities] = useState([]);
+  const [activity, setActivity] = useState({
+    title: '',
+    description: '',
+    udp: 0,
+    estimatedCompletionTime: '',
+    isPaid: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const newValue = type === 'checkbox' ? checked : value;
+
+    setActivity({
+      ...activity,
+      [name]: newValue,
+    });
+  };
+
+  const handleSave = () => {
+    if (activity.title && activity.description && activity.udp >= 0) {
+      setActivities([...activities, activity]);
+      setActivity({
+        title: '',
+        description: '',
+        udp: 0,
+        estimatedCompletionTime: '',
+        isPaid: false,
+      });
+    }
+  };
+
+
+
   const [progressByActividad, setProgressByActividad] = useState({
-    'Actividad 1': 20,
-    'Actividad 2': 60,
-    'Actividad 3': 40,
+    'Actividad 1': 60,
+    'Actividad 2': 80,
+    'Actividad 3': 30,
     'Actividad 4': 80,
+    'Actividad 5': 60,
+    'Actividad 6': 100,
+    'Actividad 7': 20,
+    'Actividad 8': 20,
   });
 
   // Función para obtener el texto de la actividad
@@ -37,6 +78,14 @@ const DashboardColaborador = ({ user }) => {
         return 'PYTHON';
       case 4:
         return 'JAVA';
+      case 5:
+        return 'SEMINARIO';
+      case 6:
+        return 'COMUNICACION';
+      case 7:
+        return 'CAPACITACION';
+      case 8:
+        return 'CHARLA';
       default:
         return '';
     }
@@ -137,7 +186,6 @@ const DashboardColaborador = ({ user }) => {
   };
 
   const handleCrearActividad = () => {
-
     actividades.data.forEach((actividad) => {
       const {
         tipoUnidadDesarrollo,
@@ -200,15 +248,367 @@ const DashboardColaborador = ({ user }) => {
     });
   };
 
+  const handleObtenerClick = () => {
 
+    setMostrarInterfazSecundaria(true);
+
+
+  };
+
+  const handleAceptarClick = () => {
+    setMostrarInterfazSecundaria(false);
+  };
+
+  const handleCancelarClick = () => {
+    setMostrarInterfazSecundaria(false);
+  };
+
+  const contenidoInterfazSecundaria = () => {
+    return (
+      <Row>
+        <Card className='roadmap'>
+          <Card.Header>
+            <div className='resume-text'>Ingresar Nueva Actividad</div>
+          </Card.Header>
+          <Card.Body>
+            <div class="row">
+              <div class="col">
+                <img src="alvaro.png" alt="perfil-alvaro" className="perfil-alvaro-roadmap" />
+              </div>
+              <div class="col">
+                <div className='h1-titulos-valor'>
+                  <label>Álvaro Tabares</label><br></br>
+                  <label>Desarrollador Junior</label>
+                </div>
+              </div>
+            </div>
+
+            <div className='valor'>Semi-senior: </div>
+            <div class="row">
+              <div class="col">
+                <div className='h1-titulos-valor'>Lenguajes:</div>
+                <div className='h1-actividades mb-2'>Java avanzado</div>
+                <div className='h1-actividades mb-2'>Python avanzado</div>
+                <div className='h1-actividades mb-2'>Js avanzado</div>
+                <div className='h1-actividades mb-2'>Rust básico</div>
+                <div className='h1-actividades mb-2'>Go básico</div>
+                <div className='h1-actividades mb-2'>Kotlin básico</div>
+
+                <div className='h1-titulos-valor'>Principios POO:</div>
+                <div className='h1-actividades'>Curso de patrones de diseño</div>
+
+                <div className='h1-titulos-valor'>Fundamentos informática:</div>
+                <div className='h1-actividades'>Curso arquitectura microservicios</div>
+
+                <div className='h1-titulos-valor'>Habilidades no técnicas:</div>
+                <div className='h1-actividades'>Curso de liderazgo</div>
+                <div className='h1-actividades'>Curso de mentoría</div>
+                <div className='h1-actividades'>Curso de aprendizaje continuo</div>
+
+              </div>
+
+              <div class="col">
+                <div className='h1-titulos'>✔</div>
+                <Form.Check
+                  class="mb-2"
+                  checked={true}
+                  type="checkbox"
+                  name="javaAvanzado"
+                // checked={activity.isPaid}                    
+                // onChange={handleChange}
+                />
+                <Form.Check
+                  class="mb-2"
+                  type="checkbox"
+                  name="pythonAvanzado"
+                // checked={activity.isPaid}                    
+                // onChange={handleChange}
+                />
+                <Form.Check
+                  class="mb-2"
+                  type="checkbox"
+                  name="JsAvanzado"
+                // checked={activity.isPaid}                    
+                // onChange={handleChange}
+                />
+                <Form.Check
+                  class="mb-2"
+                  type="checkbox"
+                  name="RustBasic"
+                // checked={activity.isPaid}                    
+                // onChange={handleChange}
+                />
+                <Form.Check
+                  class="mb-2"
+                  type="checkbox"
+                  name="GoBasic"
+                // checked={activity.isPaid}                    
+                // onChange={handleChange}
+                />
+                <Form.Check
+                  class="mb-2"
+                  type="checkbox"
+                  name="KotlinBasic"
+                // checked={activity.isPaid}                    
+                // onChange={handleChange}
+                />
+                <br></br><br></br>
+                <Form.Check
+                  class="mb-4"
+                  checked={true}
+                  type="checkbox"
+                  name="isPaid"
+                // checked={activity.isPaid}                    
+                // onChange={handleChange}
+                />
+                <br></br>
+                <Form.Check
+                  class="mb-4"
+                  type="checkbox"
+                  name="isPaid"
+                // checked={activity.isPaid}                    
+                // onChange={handleChange}
+                />
+                <br></br><br></br><br></br>
+
+                <Form.Check
+                  class="mb-2"
+                  type="checkbox"
+                  name="isPaid"
+                // checked={activity.isPaid}                    
+                // onChange={handleChange}
+                />
+                <Form.Check
+                  class="mb-2"
+                  type="checkbox"
+                  name="isPaid"
+                  checked={true}
+                // checked={activity.isPaid}                    
+                // onChange={handleChange}
+                />
+                <Form.Check
+                  class="mb-2"
+                  type="checkbox"
+                  name="isPaid"
+                // checked={activity.isPaid}                    
+                // onChange={handleChange}
+                />
+              </div>
+            </div>
+            <br></br>
+
+
+
+          </Card.Body>
+
+        </Card>
+
+        <Col md={6}>
+          <Card className='roadmap'>
+            <Card.Header>
+              <div className='resume-text'>Próximos proyectos</div>
+            </Card.Header>
+            <div className="activity-container">
+              <div className='valor'>Junior: </div>
+              <div class="row">
+                <div class="col">
+
+                  <div className='h1-titulos-proyectos'>Aplicación Web:</div>
+                  <div className='h1-tecnologias-proyectos'>Requisitos: Java, JavaScript, HTML, CSS</div>
+                </div>
+                <div class="row">
+                  <div>
+                    <br></br>
+                    <Button>Postularse</Button>
+                  </div>
+                </div>
+              </div>
+              <br></br>
+
+
+              <div class="row">
+                <div class="col">
+
+                  <div className='h1-titulos-proyectos'>Desarrollo de un bot de chat:</div>
+                  <div className='h1-tecnologias-proyectos'>Requisitos: Python, Flask, Heroku</div>
+                </div>
+                <div class="row">
+                  <div>
+                    <br></br>
+                    <Button>Postularse</Button>
+                  </div>
+                </div>
+              </div>
+              <br></br>
+
+              <div class="row">
+                <div class="col">
+
+                  <div className='h1-titulos-proyectos'>Desarrollo de un bot de chat:</div>
+                  <div className='h1-tecnologias-proyectos'>Requisitos: Python, Flask, Heroku</div>
+                </div>
+                <div class="row">
+                  <div>
+                    <br></br>
+                    <Button>Postularse</Button>
+                  </div>
+                </div>
+              </div>
+              <br></br>
+            </div>
+
+            <br></br>
+            <div className="activity-container">
+              <div className='valor'>Semi-senior: </div>
+              <div class="row">
+                <div class="col">
+
+                  <div className='h1-titulos-proyectos'>Aplicación móvil:</div>
+                  <div className='h1-tecnologias-proyectos'>Requisitos: Java, Kotlin, Flutter</div>
+                </div>
+                <div class="row">
+                  <div>
+                    <br></br>
+                    <Button>Postularse</Button>
+                  </div>
+                </div>
+              </div>
+              <br></br>
+
+
+              <div class="row">
+                <div class="col">
+
+                  <div className='h1-titulos-proyectos'>Desarrollo de una API REST:</div>
+                  <div className='h1-tecnologias-proyectos'>Requisitos: Java, Python, Node.js</div>
+                </div>
+                <div class="row">
+                  <div>
+                    <br></br>
+                    <Button>Postularse</Button>
+                  </div>
+                </div>
+              </div>
+              <br></br>
+
+              <div class="row">
+                <div class="col">
+
+                  <div className='h1-titulos-proyectos'>Arquitectura de microservicios:</div>
+                  <div className='h1-tecnologias-proyectos'>Requisitos: Java, Docker, Kubernetes</div>
+                </div>
+                <div class="row">
+                  <div>
+                    <br></br>
+                    <Button>Postularse</Button>
+                  </div>
+                </div>
+              </div>
+              <br></br>
+            </div>
+            <br></br>
+            <div className="activity-container">
+              <div className='valor'>Semi-senior: </div>
+              <div class="row">
+                <div class="col">
+
+                  <div className='h1-titulos-proyectos'>Aplicación móvil:</div>
+                  <div className='h1-tecnologias-proyectos'>Requisitos: Java, Kotlin, Flutter</div>
+                </div>
+                <div class="row">
+                  <div>
+                    <br></br>
+                    <Button>Postularse</Button>
+                  </div>
+                </div>
+              </div>
+              <br></br>
+
+
+              <div class="row">
+                <div class="col">
+
+                  <div className='h1-titulos-proyectos'>Desarrollo de una API REST:</div>
+                  <div className='h1-tecnologias-proyectos'>Requisitos: Java, Python, Node.js</div>
+                </div>
+                <div class="row">
+                  <div>
+                    <br></br>
+                    <Button>Postularse</Button>
+                  </div>
+                </div>
+              </div>
+              <br></br>
+
+              <div class="row">
+                <div class="col">
+
+                  <div className='h1-titulos-proyectos'>Arquitectura de microservicios:</div>
+                  <div className='h1-tecnologias-proyectos'>Requisitos: Java, Docker, Kubernetes</div>
+                </div>
+                <div class="row">
+                  <div>
+                    <br></br>
+                    <Button>Postularse</Button>
+                  </div>
+                </div>
+              </div>
+              <br></br>
+            </div>
+          </Card>
+        </Col>
+      </Row>
+
+    );
+  }
+
+  // Estado para controlar la visibilidad de la interfaz de notificaciones
+  const [mostrarNotificaciones, setMostrarNotificaciones] = useState(false);
+
+  // Función para mostrar/ocultar la interfaz de notificaciones
+  const toggleNotificaciones = () => {
+    setMostrarNotificaciones(!mostrarNotificaciones);
+  };
 
   return (
     <div className="container-fluid">
       <br />
 
+      <div className="d-flexjustify-content-end">
+        <button className="btn btn-link notificaciones-button" onClick={toggleNotificaciones}>
+          <img src="campana.png" alt className="Notificaciones" />
+        </button>
+
+      </div>
+
+      {mostrarNotificaciones && (
+        <div className="notificaciones-overlay">
+          <h1>Notificaciones</h1>
+          <p>Raul Collazos ha realizado una recomendación.</p>
+          <p>Te extrañamos! No olvides realizar tus registros de avance.</p>
+          <p>En hora buena! Has completado la Actividad 6.</p>
+
+        </div>
+      )}
+
       <div className="text-900 text-3xl font-medium mb-3 welcome-text">Inicio - Colaborador</div>
 
       <img src="alvaro150.png" alt="perfil-alvaro" className="perfil-alvaro" />
+      {mostrarInterfazSecundaria && (
+        <div className="InterfazRoadMap">
+          {
+            contenidoInterfazSecundaria()
+
+          }
+          <br></br>
+          <div className="Botones">
+            <button className="btnAceptar" onClick={handleAceptarClick}>Aceptar</button>
+            <button className="btnCancelar" onClick={handleCancelarClick}>Cancelar</button>
+          </div>
+        </div>
+      )}
+
+
       <hr className="border-light m-0" />
       <br />
 
@@ -217,8 +617,7 @@ const DashboardColaborador = ({ user }) => {
           <div className="resume-text">Resumen</div>
         </div>
         <div className="row">
-
-          {[1, 2, 3, 4].map((actividadNum) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((actividadNum) => (
             <div className="col-xl-3 col-md-6 mb-4" key={`Actividad ${actividadNum}`}>
               <div className="card border-left-primary shadow h-100 py-2">
                 <div className="col mr-2">
@@ -246,6 +645,9 @@ const DashboardColaborador = ({ user }) => {
           <Link to="/plan-carrera">
             <Button>Plan carrera</Button>
           </Link>
+        </div>
+        <div className="col-lg-6">
+          <button className="btn btn-primary" onClick={() => handleObtenerClick()}>Vortex map</button>
         </div>
       </div>
       <br />
@@ -304,6 +706,10 @@ const DashboardColaborador = ({ user }) => {
                   <option>Actividad 2</option>
                   <option>Actividad 3</option>
                   <option>Actividad 4</option>
+                  <option>Actividad 5</option>
+                  <option>Actividad 6</option>
+                  <option>Actividad 7</option>
+                  <option>Actividad 8</option>
                 </Form.Select>
               </Col>
             </Row>

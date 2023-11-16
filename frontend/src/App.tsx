@@ -55,7 +55,7 @@ function App() {
               <Sidebar>
                 <div className="text-right mt-3">
                   {user ? (
-                    <Button onClick={handleLogout} variant='primary'>Log out</Button>
+                    <Button onClick={handleLogout} variant='primary'>Salir</Button>
                   ) : null}
                 </div>
                 <br></br>

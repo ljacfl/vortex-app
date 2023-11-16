@@ -14,17 +14,18 @@ const EquipoCoach = () => {
                         <img src="alvaro.png" alt className=" perfil-alvaro " />
                         <div className="h3">Alvaro Tabares</div>
                         <div class="text-white-70">Colaborador</div>
-                        <h4 class="text-gray-800">Progreso <span
-                            class="float-right">60%</span></h4>
+                        <h4 class="text-gray-800">Progreso</h4>
 
                         <div role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                             <div className="progress-bar text-bg-warning mb-2" style={{ width: '60%' }}>60%</div>
                         </div>
                         <br></br>
                         <Link to="/plan-carrera">
-                        <Button className="btn btn-primary">Consultar</Button>
+                            <Button className="btn btn-primary">Consultar</Button>
                         </Link>
+
                     </div>
+                    <br></br>
 
 
                 </div>
@@ -47,6 +48,7 @@ const EquipoCoach = () => {
                         </div>
 
                     </div>
+                    <br></br>
                 </div>
                 <br></br>
 
@@ -65,10 +67,10 @@ const EquipoCoach = () => {
                         <Button className="btn btn-primary">Consultar</Button>
                     </div>
 
-
+                    <br></br>
                 </div>
                 <br></br>
-                
+
                 <div className="text-right mt-3">
                     {/* <Button variant="primary" className="btn btn-primary">Ver más</Button>&nbsp; */}
                 </div>

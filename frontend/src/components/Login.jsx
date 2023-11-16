@@ -61,8 +61,9 @@ const Login = ({ setUser, selectedRole, onChange }) => {
                 </form>
                 {error && <span className="campos-obligatorios">Los campos son obligatorios.</span>}
                 <Link to="/register">
-                    <Button variant="secondary">Registrarse</Button>
-                </Link>
+                    <Button variant="secondary">Registrarse</Button><br></br>
+                    <Button variant="secondary">¿Olvidaste tu contraseña?</Button>
+                </Link>                
             </div>
         </section>
     );

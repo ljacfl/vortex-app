@@ -51,15 +51,15 @@ const PlanCarrera = () => {
                     <div class="row">
                         <div class="col">
                             <div className='h1-titulos mb-4'>Nivel actual:</div>
-                            <div className='h1-actividades mb-4'>Desarrollador Junior</div>
+                            <div className='h1-cursos mb-4'>Desarrollador Junior</div>
                         </div>
                         <div className="col" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                             <div className='h1-titulos mb-4'>Progreso Split:</div>
-                            <div className="progress-bar text-bg-warning mb-4" style={{ width: '60%' }}>60%</div>
+                            <div className="progress-bar text-bg-warning mb-4" style={{ width: '56%' }}>56%</div>
                         </div>
                         <div className="col" role="progressbar" aria-label="Warning example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                             <div className='h1-titulos mb-4'>Puntos acumulados:</div>
-                            <div className='h1-actividades mb-4'>350</div>
+                            <div className='h1-cursos mb-4'>3500</div>
                         </div>
                     </div>
                     <Link to="/cursos">

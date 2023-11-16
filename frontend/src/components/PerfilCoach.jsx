@@ -18,16 +18,16 @@ const PerfilCoach = () =>{
                                     <img src="raul.png" alt className="d-block ui-w-80" />
                                     <div class="media-body ml-4">
                                         <label className="btn btn-outline-primary">
-                                            Upload new photo
+                                            Subir nueva foto
                                             <input type="file" className="account-settings-fileinput" style={{ display: 'none' }} />
                                         </label> &nbsp;                                    
-                                        <div className="aaa">Allowed JPG, GIF or PNG. Max size of 800K </div>
+                                        <div className="aaa">Permitido JPG, GIF o PNG. Tamaño máximo 800K </div>
                                     </div>
                                 </div>
                                 <hr className="border-light m-0" />
                                 <div className="card-body">
                                     <div className="form-group">
-                                        <label className="form-label">Username</label>
+                                        <label className="form-label">Usuario</label>
                                         <FormControl type="text" className="form-control mb-1" value="RCollazos" />
                                     </div>
                                     <div className="form-group">
